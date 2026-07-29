@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sitio web de Capioca Foodtruck: historia, filosofía, vacantes y proceso de reclutamiento." />
+  <title>Capioca | Bubble Tea & Talento</title>
+
+  <style>
+    :root{
+      --turquesa:#0a8f9a;
+      --turquesa-oscuro:#08666f;
+      --naranja:#f5a500;
+      --amarillo:#ffd56a;
+      --crema:#fff8e8;
+      --cafe:#5c2f1b;
+      --blanco:#ffffff;
+      --gris:#f3f5f6;
+      --texto:#243238;
+      --sombra:0 14px 35px rgba(8,102,111,.14);
+      --radio:22px;
+    }
+
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--texto);
+      background:linear-gradient(180deg,#fffdf8 0%,#ffffff 45%,#f6fbfb 100%);
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    button,input,select,textarea{
+      font:inherit;
+    }
+
+    .container{
+      width:min(1120px,92%);
+      margin:auto;
+    }
+
+    .section{
+      padding:90px 0;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:44px;
+    }
+
+    .section-title span{
+      display:inline-block;
+      color:var(--turquesa);
+      font-weight:800;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      font-size:.82rem;
+      margin-bottom:8px;
+    }
+
+    .section-title h2{
+      font-size:clamp(2rem,4vw,3.2rem);
+      line-height:1.1;
+      color:var(--cafe);
+      margin-bottom:14px;
+    }
+
+    .section-title p{
+      max-width:760px;
+      margin:auto;
+      color:#5f6c72;
+    }
+
+    /* NAV */
+    header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(255,255,255,.92);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(10,143,154,.12);
+    }
+
+    .nav{
+      min-height:74px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:900;
+      color:var(--turquesa-oscuro);
+      font-size:1.35rem;
+    }
+
+    .logo{
+      width:48px;
+      height:48px;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      background:radial-gradient(circle at 35% 30%,#fff 0 15%,var(--amarillo) 16% 34%,var(--turquesa) 35% 100%);
+      box-shadow:0 8px 18px rgba(10,143,154,.25);
+      border:3px solid white;
+      font-size:1.4rem;
+    }
+
+    .menu{
+      display:flex;
+      list-style:none;
+      gap:22px;
+      align-items:center;
+    }
+
+    .menu a{
+      font-weight:700;
+      font-size:.94rem;
+      transition:.25s;
+    }
+
+    .menu a:hover{
+      color:var(--naranja);
+    }
+
+    .menu-btn{
+      display:none;
+      border:0;
+      background:var(--turquesa);
+      color:white;
+      border-radius:12px;
+      padding:10px 13px;
+      cursor:pointer;
+      font-size:1.2rem;
+    }
+
+    /* HERO */
+    .hero{
+      min-height:calc(100vh - 74px);
+      display:grid;
+      align-items:center;
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 85% 15%,rgba(255,213,106,.56),transparent 27%),
+        radial-gradient(circle at 8% 85%,rgba(10,143,154,.15),transparent 30%),
+        linear-gradient(135deg,#fff9eb,#ffffff 55%,#eaf9fa);
+    }
+
+    .hero::before,
+    .hero::after{
+      content:"";
+      position:absolute;
+      border-radius:50%;
+      border:10px solid rgba(10,143,154,.09);
+    }
+
+    .hero::before{
+      width:220px;height:220px;
+      top:8%;left:-80px;
+    }
+
+    .hero::after{
+      width:320px;height:320px;
+      right:-120px;bottom:-120px;
+      border-color:rgba(245,165,0,.13);
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.08fr .92fr;
+      align-items:center;
+      gap:60px;
+      position:relative;
+      z-index:2;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:9px;
+      background:white;
+      color:var(--turquesa-oscuro);
+      border:1px solid rgba(10,143,154,.18);
+      padding:9px 15px;
+      border-radius:999px;
+      font-weight:800;
+      box-shadow:var(--sombra);
+      margin-bottom:22px;
+    }
+
+    .hero h1{
+      font-size:clamp(3.1rem,7vw,6.2rem);
+      line-height:.95;
+      color:var(--cafe);
+      margin-bottom:22px;
+      letter-spacing:-.04em;
+    }
+
+    .hero h1 strong{
+      color:var(--turquesa);
+    }
+
+    .hero p{
+      font-size:1.1rem;
+      max-width:620px;
+      color:#566268;
+      margin-bottom:28px;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border:0;
+      border-radius:999px;
+      padding:14px 22px;
+      font-weight:800;
+      cursor:pointer;
+      transition:.25s;
+    }
+
+    .btn-primary{
+      background:var(--turquesa);
+      color:white;
+      box-shadow:0 10px 25px rgba(10,143,154,.28);
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-3px);
+      background:var(--turquesa-oscuro);
+    }
+
+    .btn-secondary{
+      background:white;
+      color:var(--cafe);
+      border:2px solid var(--amarillo);
+    }
+
+    .btn-secondary:hover{
+      transform:translateY(-3px);
+      background:var(--crema);
+    }
+
+    .drink-scene{
+      position:relative;
+      min-height:520px;
+      display:grid;
+      place-items:center;
+    }
+
+    .cup{
+      width:250px;
+      height:420px;
+      border-radius:30px 30px 65px 65px;
+      background:
+        linear-gradient(180deg,rgba(255,255,255,.45),rgba(255,255,255,.08)),
+        linear-gradient(180deg,#eeb96e 0%,#c67d3d 52%,#81411d 100%);
+      border:7px solid rgba(255,255,255,.82);
+      box-shadow:0 30px 60px rgba(92,47,27,.24);
+      position:relative;
+      overflow:hidden;
+      transform:rotate(-4deg);
+    }
+
+    .cup::before{
+      content:"CAPIOCA";
+      position:absolute;
+      inset:90px 20px auto;
+      text-align:center;
+      font-size:2rem;
+      letter-spacing:.12em;
+      font-weight:900;
+      color:rgba(255,255,255,.86);
+      border:4px solid rgba(255,255,255,.7);
+      border-radius:50%;
+      padding:34px 5px;
+    }
+
+    .cup::after{
+      content:"";
+      position:absolute;
+      left:0;right:0;bottom:0;
+      height:110px;
+      background:
+        radial-gradient(circle at 20px 22px,#2f170d 0 12px,transparent 13px),
+        radial-gradient(circle at 75px 42px,#2f170d 0 13px,transparent 14px),
+        radial-gradient(circle at 132px 21px,#2f170d 0 12px,transparent 13px),
+        radial-gradient(circle at 195px 48px,#2f170d 0 14px,transparent 15px),
+        radial-gradient(circle at 230px 14px,#2f170d 0 11px,transparent 12px);
+      background-color:rgba(57,26,10,.28);
+    }
+
+    .straw{
+      position:absolute;
+      width:28px;
+      height:260px;
+      background:linear-gradient(90deg,#ef476f,#ff8fab);
+      border-radius:18px;
+      top:-15px;
+      right:116px;
+      transform:rotate(10deg);
+      z-index:-1;
+      box-shadow:0 12px 25px rgba(239,71,111,.25);
+    }
+
+    .float-bubble{
+      position:absolute;
+      border-radius:50%;
+      background:rgba(10,143,154,.14);
+      border:2px solid rgba(10,143,154,.22);
+      animation:float 4s ease-in-out infinite;
+    }
+
+    .b1{width:65px;height:65px;left:8%;top:15%}
+    .b2{width:38px;height:38px;right:8%;top:18%;animation-delay:.8s}
+    .b3{width:88px;height:88px;right:2%;bottom:10%;animation-delay:1.5s}
+    .b4{width:30px;height:30px;left:15%;bottom:14%;animation-delay:2.2s}
+
+    @keyframes float{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-16px)}
+    }
+
+    /* CARDS */
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:24px;
+    }
+
+    .card{
+      background:white;
+      border-radius:var(--radio);
+      padding:28px;
+      box-shadow:var(--sombra);
+      border:1px solid rgba(10,143,154,.09);
+      transition:.25s;
+    }
+
+    .card:hover{
+      transform:translateY(-7px);
+    }
+
+    .icon{
+      width:58px;
+      height:58px;
+      border-radius:18px;
+      display:grid;
+      place-items:center;
+      font-size:1.6rem;
+      background:linear-gradient(135deg,var(--amarillo),#fff1b8);
+      margin-bottom:18px;
+    }
+
+    .card h3{
+      color:var(--turquesa-oscuro);
+      margin-bottom:10px;
+      font-size:1.35rem;
+    }
+
+    .about-grid{
+      display:grid;
+      grid-template-columns:.9fr 1.1fr;
+      gap:50px;
+      align-items:center;
+    }
+
+    .about-visual{
+      min-height:420px;
+      border-radius:30px;
+      padding:34px;
+      background:
+        linear-gradient(145deg,rgba(10,143,154,.92),rgba(8,102,111,.92)),
+        linear-gradient(45deg,#000,#000);
+      color:white;
+      position:relative;
+      overflow:hidden;
+      box-shadow:var(--sombra);
+    }
+
+    .about-visual::after{
+      content:"";
+      position:absolute;
+      width:260px;height:260px;
+      border-radius:50%;
+      background:rgba(255,213,106,.22);
+      right:-70px;bottom:-70px;
+    }
+
+    .about-visual h3{
+      font-size:2rem;
+      margin-bottom:18px;
+    }
+
+    .about-visual .year{
+      font-size:5rem;
+      font-weight:900;
+      color:var(--amarillo);
+      line-height:1;
+      margin:30px 0 10px;
+    }
+
+    .about-copy h2{
+      font-size:clamp(2rem,4vw,3rem);
+      color:var(--cafe);
+      margin-bottom:18px;
+    }
+
+    .about-copy p{
+      color:#5f6c72;
+      margin-bottom:15px;
+    }
+
+    /* ORGANIGRAMA */
+    .org{
+      display:grid;
+      gap:18px;
+      justify-items:center;
+    }
+
+    .org-row{
+      width:100%;
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:18px;
+    }
+
+    .org-box{
+      min-width:230px;
+      background:white;
+      border-radius:18px;
+      padding:20px;
+      text-align:center;
+      box-shadow:var(--sombra);
+      border-top:5px solid var(--turquesa);
+    }
+
+    .org-box strong{
+      display:block;
+      color:var(--cafe);
+      font-size:1.08rem;
+    }
+
+    .org-box small{
+      color:#607078;
+    }
+
+    .org-line{
+      width:3px;
+      height:28px;
+      background:var(--amarillo);
+    }
+
+    /* PROCESS */
+    .process{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
+    }
+
+    .step{
+      background:white;
+      border-radius:20px;
+      padding:24px;
+      box-shadow:var(--sombra);
+      border:1px solid rgba(245,165,0,.15);
+      position:relative;
+    }
+
+    .step-number{
+      width:46px;height:46px;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      background:var(--naranja);
+      color:white;
+      font-weight:900;
+      margin-bottom:15px;
+    }
+
+    .step h3{
+      font-size:1.08rem;
+      color:var(--turquesa-oscuro);
+      margin-bottom:7px;
+    }
+
+    /* VACANTES */
+    .jobs{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:28px;
+    }
+
+    .job{
+      background:white;
+      border-radius:26px;
+      overflow:hidden;
+      box-shadow:var(--sombra);
+      border:1px solid rgba(10,143,154,.1);
+    }
+
+    .job-head{
+      padding:28px;
+      color:white;
+      background:linear-gradient(135deg,var(--turquesa),var(--turquesa-oscuro));
+    }
+
+    .job:nth-child(2) .job-head{
+      background:linear-gradient(135deg,var(--naranja),#d77f00);
+    }
+
+    .job-head span{
+      font-weight:800;
+      opacity:.86;
+      text-transform:uppercase;
+      font-size:.8rem;
+      letter-spacing:.11em;
+    }
+
+    .job-head h3{
+      font-size:1.7rem;
+      margin-top:8px;
+    }
+
+    .job-body{
+      padding:28px;
+    }
+
+    .job-body h4{
+      color:var(--cafe);
+      margin:18px 0 8px;
+    }
+
+    .job-body ul{
+      padding-left:20px;
+      color:#58666c;
+    }
+
+    .job-body li{
+      margin:6px 0;
+    }
+
+    /* INTERVIEW */
+    .interview-wrap{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:30px;
+      align-items:stretch;
+    }
+
+    .star{
+      background:linear-gradient(145deg,var(--cafe),#7e4528);
+      color:white;
+      border-radius:28px;
+      padding:34px;
+      box-shadow:var(--sombra);
+    }
+
+    .star h3{
+      font-size:2rem;
+      margin-bottom:14px;
+      color:var(--amarillo);
+    }
+
+    .star-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+      margin-top:22px;
+    }
+
+    .star-item{
+      background:rgba(255,255,255,.1);
+      padding:16px;
+      border-radius:15px;
+    }
+
+    .star-item strong{
+      display:block;
+      color:var(--amarillo);
+      font-size:1.25rem;
+    }
+
+    .competencies{
+      background:white;
+      border-radius:28px;
+      padding:34px;
+      box-shadow:var(--sombra);
+    }
+
+    .competencies h3{
+      color:var(--turquesa-oscuro);
+      font-size:1.8rem;
+      margin-bottom:16px;
+    }
+
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:11px;
+    }
+
+    .chip{
+      border-radius:999px;
+      background:var(--crema);
+      border:1px solid #ffe09a;
+      padding:10px 14px;
+      font-weight:700;
+      color:var(--cafe);
+    }
+
+    /* FORM */
+    .application{
+      background:
+        radial-gradient(circle at 90% 10%,rgba(255,213,106,.22),transparent 26%),
+        linear-gradient(145deg,#eefafa,#ffffff);
+    }
+
+    .form-card{
+      max-width:900px;
+      margin:auto;
+      background:white;
+      padding:34px;
+      border-radius:28px;
+      box-shadow:var(--sombra);
+    }
+
+    .form-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:18px;
+    }
+
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:7px;
+    }
+
+    .field.full{
+      grid-column:1/-1;
+    }
+
+    label{
+      font-weight:800;
+      color:var(--turquesa-oscuro);
+    }
+
+    input,select,textarea{
+      width:100%;
+      padding:13px 14px;
+      border:1px solid #d7e2e4;
+      border-radius:13px;
+      outline:none;
+      background:#fbfdfd;
+      transition:.2s;
+    }
+
+    input:focus,select:focus,textarea:focus{
+      border-color:var(--turquesa);
+      box-shadow:0 0 0 4px rgba(10,143,154,.11);
+    }
+
+    textarea{
+      min-height:120px;
+      resize:vertical;
+    }
+
+    .form-note{
+      font-size:.9rem;
+      color:#6b777d;
+      margin-top:10px;
+    }
+
+    .success{
+      display:none;
+      margin-top:18px;
+      padding:14px;
+      border-radius:13px;
+      background:#e7f8ee;
+      color:#17663a;
+      font-weight:700;
+    }
+
+    /* CONTACT */
+    .contact-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+    }
+
+    .contact-card{
+      text-align:center;
+      background:white;
+      padding:28px;
+      border-radius:22px;
+      box-shadow:var(--sombra);
+    }
+
+    .contact-card strong{
+      display:block;
+      color:var(--turquesa-oscuro);
+      margin:10px 0 4px;
+    }
+
+    footer{
+      background:var(--cafe);
+      color:white;
+      padding:30px 0;
+      text-align:center;
+    }
+
+    footer small{
+      opacity:.8;
+    }
+
+    .top-btn{
+      position:fixed;
+      right:20px;
+      bottom:20px;
+      width:48px;height:48px;
+      border:0;
+      border-radius:50%;
+      background:var(--naranja);
+      color:white;
+      font-size:1.2rem;
+      cursor:pointer;
+      box-shadow:0 10px 25px rgba(245,165,0,.35);
+      display:none;
+      z-index:999;
+    }
+
+    @media(max-width:900px){
+      .hero-grid,
+      .about-grid,
+      .interview-wrap{
+        grid-template-columns:1fr;
+      }
+
+      .hero{
+        padding:55px 0;
+      }
+
+      .drink-scene{
+        min-height:440px;
+      }
+
+      .grid-3,
+      .process{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .menu{
+        position:absolute;
+        top:74px;
+        left:0;
+        right:0;
+        background:white;
+        padding:20px;
+        flex-direction:column;
+        box-shadow:var(--sombra);
+        display:none;
+      }
+
+      .menu.open{display:flex}
+      .menu-btn{display:block}
+    }
+
+    @media(max-width:650px){
+      .section{padding:68px 0}
+      .grid-3,
+      .process,
+      .jobs,
+      .contact-grid,
+      .form-grid{
+        grid-template-columns:1fr;
+      }
+
+      .field.full{
+        grid-column:auto;
+      }
+
+      .hero h1{
+        font-size:3.4rem;
+      }
+
+      .cup{
+        width:205px;
+        height:350px;
+      }
+
+      .straw{
+        right:95px;
+      }
+
+      .drink-scene{
+        min-height:390px;
+      }
+
+      .star-grid{
+        grid-template-columns:1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="nav container">
+      <a href="#inicio" class="brand">
+        <span class="logo">🧋</span>
+        <span>Capioca</span>
+      </a>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Abrir menú">☰</button>
+
+      <ul class="menu" id="menu">
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#filosofia">Filosofía</a></li>
+        <li><a href="#proceso">Reclutamiento</a></li>
+        <li><a href="#vacantes">Vacantes</a></li>
+        <li><a href="#entrevista">Entrevista</a></li>
+        <li><a href="#postulacion">Postúlate</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <div class="badge">🧋 The Bubble Tea Spirit</div>
+          <h1>Sabores que unen, <strong>talento que crece.</strong></h1>
+          <p>
+            Somos una marca local de bubble tea en Campeche. Creamos bebidas,
+            experiencias y oportunidades para personas con actitud de servicio,
+            compromiso y ganas de formar parte de un gran equipo.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#vacantes">Ver vacantes</a>
+            <a class="btn btn-secondary" href="#nosotros">Conocer Capioca</a>
+          </div>
+        </div>
+
+        <div class="drink-scene" aria-label="Ilustración de una bebida de bubble tea">
+          <span class="float-bubble b1"></span>
+          <span class="float-bubble b2"></span>
+          <span class="float-bubble b3"></span>
+          <span class="float-bubble b4"></span>
+          <div class="straw"></div>
+          <div class="cup"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="nosotros">
+      <div class="container about-grid">
+        <div class="about-visual">
+          <h3>Una idea compartida que se convirtió en una marca local.</h3>
+          <div class="year">2026</div>
+          <p>
+            Capioca continúa fortaleciendo su organización, su servicio y sus procesos
+            para crecer de manera sostenible en Campeche.
+          </p>
+        </div>
+
+        <div class="about-copy">
+          <span style="color:var(--turquesa);font-weight:800;text-transform:uppercase;letter-spacing:.1em;">Quiénes somos</span>
+          <h2>Una experiencia diferente en cada bebida</h2>
+          <p>
+            Capioca Campeche nació como un proyecto de pareja con el propósito de
+            construir un negocio propio y ofrecer bebidas innovadoras y refrescantes.
+          </p>
+          <p>
+            La empresa se especializa en bubble tea y permite que cada cliente
+            personalice su bebida con sabores, texturas, tapioca y perlas explosivas.
+            Con el tiempo, el proyecto pasó de ser una idea a convertirse en un punto
+            de encuentro juvenil con presencia física, redes sociales, pedidos y
+            servicio para eventos.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="filosofia" style="background:var(--crema);">
+      <div class="container">
+        <div class="section-title">
+          <span>Nuestra esencia</span>
+          <h2>Misión, visión y valores</h2>
+          <p>La filosofía que orienta el servicio, el trabajo en equipo y el crecimiento de Capioca.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card">
+            <div class="icon">🎯</div>
+            <h3>Misión</h3>
+            <p>
+              Brindar a la comunidad de Campeche una experiencia refrescante y única
+              mediante bebidas de alta calidad basadas en la cultura del bubble tea,
+              ofreciendo un servicio amable y un espacio de convivencia que alegre el día
+              de nuestros clientes.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="icon">🚀</div>
+            <h3>Visión</h3>
+            <p>
+              Consolidarnos como la marca líder de bubble tea en el estado, reconocida
+              por la innovación en sabores y por ser un lugar favorito para compartir
+              momentos especiales, ampliando nuestra presencia en puntos estratégicos.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="icon">💛</div>
+            <h3>Valores</h3>
+            <p>
+              <strong>Calidad</strong>, <strong>innovación</strong>, <strong>cercanía</strong>
+              y <strong>compromiso</strong> orientan la preparación de cada bebida,
+              la atención a nuestros clientes y la relación con nuestro equipo.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="organizacion">
+      <div class="container">
+        <div class="section-title">
+          <span>Equipo</span>
+          <h2>Estructura organizacional</h2>
+          <p>Una organización clara permite coordinar las actividades operativas y administrativas del foodtruck.</p>
+        </div>
+
+        <div class="org">
+          <div class="org-row">
+            <div class="org-box">
+              <strong>Álvaro Maas Bazán</strong>
+              <small>Copropietario · Área Operativa</small>
+            </div>
+            <div class="org-box">
+              <strong>Alejandra Tinoco Cerveran</strong>
+              <small>Copropietaria · Área Administrativa</small>
+            </div>
+          </div>
+
+          <div class="org-line"></div>
+
+          <div class="org-row">
+            <div class="org-box">
+              <strong>Johan Sánchez</strong>
+              <small>Auxiliar operativo · Bodega e insumos</small>
+            </div>
+            <div class="org-box">
+              <strong>Paola Suárez</strong>
+              <small>Caja y atención al cliente</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="proceso" style="background:#f5fbfb;">
+      <div class="container">
+        <div class="section-title">
+          <span>Recursos Humanos</span>
+          <h2>Proceso de reclutamiento y selección</h2>
+          <p>
+            Capioca aplica un procedimiento organizado, objetivo y transparente para atraer,
+            evaluar y seleccionar a las personas más adecuadas.
+          </p>
+        </div>
+
+        <div class="process">
+          <article class="step"><div class="step-number">1</div><h3>Necesidad de personal</h3><p>Se detecta y justifica la vacante.</p></article>
+          <article class="step"><div class="step-number">2</div><h3>Requisición</h3><p>Se define el perfil, horario y condiciones.</p></article>
+          <article class="step"><div class="step-number">3</div><h3>Reclutamiento interno</h3><p>Se revisan posibles promociones.</p></article>
+          <article class="step"><div class="step-number">4</div><h3>Reclutamiento externo</h3><p>Se difunde la vacante en medios autorizados.</p></article>
+          <article class="step"><div class="step-number">5</div><h3>Revisión documental</h3><p>Se verifican requisitos y documentos.</p></article>
+          <article class="step"><div class="step-number">6</div><h3>Evaluación</h3><p>Se valoran conocimientos, habilidades y actitudes.</p></article>
+          <article class="step"><div class="step-number">7</div><h3>Entrevista STAR</h3><p>Se analizan experiencias y competencias.</p></article>
+          <article class="step"><div class="step-number">8</div><h3>Contratación e inducción</h3><p>Se formaliza e integra al nuevo colaborador.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="vacantes">
+      <div class="container">
+        <div class="section-title">
+          <span>Oportunidades</span>
+          <h2>Convocatorias disponibles</h2>
+          <p>Consulta el perfil, los requisitos y la documentación necesaria para participar.</p>
+        </div>
+
+        <div class="jobs">
+          <article class="job">
+            <div class="job-head">
+              <span>Convocatoria interna</span>
+              <h3>Encargado del Área Operativa</h3>
+            </div>
+            <div class="job-body">
+              <h4>Funciones principales</h4>
+              <ul>
+                <li>Coordinar las actividades operativas del foodtruck.</li>
+                <li>Supervisar insumos, inventarios, higiene y calidad.</li>
+                <li>Organizar al personal operativo y dar seguimiento a proveedores.</li>
+                <li>Reducir desperdicios y mejorar el uso de los recursos.</li>
+              </ul>
+
+              <h4>Perfil</h4>
+              <ul>
+                <li>Bachillerato concluido.</li>
+                <li>Experiencia previa en la operación del foodtruck.</li>
+                <li>Liderazgo, organización, comunicación y toma de decisiones.</li>
+                <li>Responsabilidad, compromiso y actitud de servicio.</li>
+              </ul>
+
+              <a href="#postulacion" class="btn btn-primary" style="margin-top:22px;">Postularme</a>
+            </div>
+          </article>
+
+          <article class="job">
+            <div class="job-head">
+              <span>Convocatoria externa</span>
+              <h3>Auxiliar de Caja y Atención al Cliente</h3>
+            </div>
+            <div class="job-body">
+              <h4>Funciones principales</h4>
+              <ul>
+                <li>Cobrar pedidos y administrar la caja.</li>
+                <li>Registrar ventas y entregar pedidos.</li>
+                <li>Resolver dudas y brindar atención amable.</li>
+                <li>Mantener orden y limpieza en el área de atención.</li>
+              </ul>
+
+              <h4>Requisitos</h4>
+              <ul>
+                <li>Ser mayor de 18 años y contar con bachillerato concluido.</li>
+                <li>Experiencia deseable en atención al cliente o manejo de caja.</li>
+                <li>Honestidad, puntualidad, compromiso y trabajo en equipo.</li>
+                <li>Disponibilidad de horario y facilidad para trabajar bajo presión.</li>
+              </ul>
+
+              <a href="#postulacion" class="btn btn-primary" style="margin-top:22px;">Enviar solicitud</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="entrevista" style="background:var(--crema);">
+      <div class="container">
+        <div class="section-title">
+          <span>Selección</span>
+          <h2>Entrevista por competencias</h2>
+          <p>La entrevista se realiza mediante la metodología STAR para conocer cómo actúa el candidato en situaciones reales.</p>
+        </div>
+
+        <div class="interview-wrap">
+          <div class="star">
+            <h3>Metodología STAR</h3>
+            <p>
+              Cada respuesta debe explicar una experiencia concreta y demostrar de qué manera
+              la persona resolvió una situación laboral.
+            </p>
+
+            <div class="star-grid">
+              <div class="star-item"><strong>S</strong>Situación</div>
+              <div class="star-item"><strong>T</strong>Tarea</div>
+              <div class="star-item"><strong>A</strong>Acción</div>
+              <div class="star-item"><strong>R</strong>Resultado</div>
+            </div>
+          </div>
+
+          <div class="competencies">
+            <h3>Competencias evaluadas</h3>
+            <div class="chips">
+              <span class="chip">Atención al cliente</span>
+              <span class="chip">Trabajo en equipo</span>
+              <span class="chip">Honestidad</span>
+              <span class="chip">Comunicación</span>
+              <span class="chip">Resolución de problemas</span>
+              <span class="chip">Trabajo bajo presión</span>
+            </div>
+
+            <h3 style="margin-top:28px;">Ejemplo de pregunta</h3>
+            <p>
+              Cuéntanos sobre una ocasión en la que un cliente presentó una queja.
+              ¿Qué hiciste y cuál fue el resultado?
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section application" id="postulacion">
+      <div class="container">
+        <div class="section-title">
+          <span>Únete al equipo</span>
+          <h2>Formulario de postulación</h2>
+          <p>Completa tus datos para participar en el proceso de reclutamiento de Capioca.</p>
+        </div>
+
+        <form class="form-card" id="applicationForm">
+          <div class="form-grid">
+            <div class="field">
+              <label for="nombre">Nombre completo</label>
+              <input id="nombre" name="nombre" type="text" required />
+            </div>
+
+            <div class="field">
+              <label for="edad">Edad</label>
+              <input id="edad" name="edad" type="number" min="18" max="70" required />
+            </div>
+
+            <div class="field">
+              <label for="correo">Correo electrónico</label>
+              <input id="correo" name="correo" type="email" required />
+            </div>
+
+            <div class="field">
+              <label for="telefono">Teléfono</label>
+              <input id="telefono" name="telefono" type="tel" pattern="[0-9]{10}" placeholder="10 dígitos" required />
+            </div>
+
+            <div class="field">
+              <label for="vacante">Vacante</label>
+              <select id="vacante" name="vacante" required>
+                <option value="">Selecciona una opción</option>
+                <option>Encargado del Área Operativa</option>
+                <option>Auxiliar de Caja y Atención al Cliente</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="escolaridad">Escolaridad</label>
+              <select id="escolaridad" name="escolaridad" required>
+                <option value="">Selecciona una opción</option>
+                <option>Secundaria</option>
+                <option>Bachillerato concluido</option>
+                <option>Licenciatura en curso</option>
+                <option>Licenciatura concluida</option>
+              </select>
+            </div>
+
+            <div class="field full">
+              <label for="experiencia">Experiencia laboral</label>
+              <textarea id="experiencia" name="experiencia" placeholder="Describe brevemente tu experiencia en atención al cliente, caja, ventas o alimentos." required></textarea>
+            </div>
+
+            <div class="field full">
+              <label for="star">Pregunta de entrevista</label>
+              <textarea id="star" name="star" placeholder="Cuéntanos sobre una situación en la que resolviste un problema con un cliente. Explica la situación, tu tarea, la acción que realizaste y el resultado." required></textarea>
+            </div>
+
+            <div class="field full">
+              <label for="cv">Currículum vitae</label>
+              <input id="cv" name="cv" type="file" accept=".pdf,.doc,.docx" required />
+            </div>
+          </div>
+
+          <p class="form-note">
+            Aviso: esta versión funciona como demostración escolar. La información no se envía a un servidor real.
+          </p>
+
+          <button type="submit" class="btn btn-primary" style="margin-top:20px;">Enviar postulación</button>
+          <div class="success" id="successMessage">
+            ¡Solicitud registrada correctamente! Gracias por tu interés en formar parte de Capioca.
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="section" id="contacto">
+      <div class="container">
+        <div class="section-title">
+          <span>Contacto</span>
+          <h2>Encuentra a Capioca</h2>
+          <p>Consulta nuestras redes para conocer promociones, horarios, pedidos y nuevas convocatorias.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <div class="icon" style="margin:auto;">📍</div>
+            <strong>Ubicación</strong>
+            <p>San Francisco de Campeche, Campeche</p>
+          </div>
+
+          <div class="contact-card">
+            <div class="icon" style="margin:auto;">📱</div>
+            <strong>Redes sociales</strong>
+            <p>Instagram · Facebook · TikTok</p>
+          </div>
+
+          <div class="contact-card">
+            <div class="icon" style="margin:auto;">💬</div>
+            <strong>Pedidos y eventos</strong>
+            <p>Atención mediante WhatsApp</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p><strong>Capioca · The Bubble Tea Spirit</strong></p>
+      <small>Proyecto académico de reclutamiento y selección · 2026</small>
+    </div>
+  </footer>
+
+  <button class="top-btn" id="topBtn" aria-label="Volver arriba">↑</button>
+
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const menu = document.getElementById("menu");
+    const topBtn = document.getElementById("topBtn");
+    const form = document.getElementById("applicationForm");
+    const successMessage = document.getElementById("successMessage");
+
+    menuBtn.addEventListener("click", () => {
+      menu.classList.toggle("open");
+    });
+
+    document.querySelectorAll(".menu a").forEach(link => {
+      link.addEventListener("click", () => menu.classList.remove("open"));
+    });
+
+    window.addEventListener("scroll", () => {
+      topBtn.style.display = window.scrollY > 500 ? "block" : "none";
+    });
+
+    topBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      successMessage.style.display = "block";
+      successMessage.scrollIntoView({ behavior: "smooth", block: "center" });
+
+      setTimeout(() => {
+        form.reset();
+      }, 700);
+    });
+  </script>
+</body>
+</html>
