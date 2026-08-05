@@ -829,7 +829,168 @@
         grid-template-columns:1fr;
       }
     }
-  </style>
+  
+    .verification-panel{
+      display:none;
+      margin-top:22px;
+      padding:22px;
+      border-radius:18px;
+      border:1px solid #d9e5e6;
+      background:#f8fbfb;
+    }
+    .verification-panel.ok{
+      display:block;
+      background:#eaf8ef;
+      border-color:#9bd4ae;
+      color:#175c35;
+    }
+    .verification-panel.error{
+      display:block;
+      background:#fff0f0;
+      border-color:#e2a2a2;
+      color:#862525;
+    }
+    .verification-code{
+      display:inline-block;
+      margin:12px 0;
+      padding:10px 16px;
+      border-radius:12px;
+      background:#fff;
+      border:2px dashed currentColor;
+      font-size:1.35rem;
+      font-weight:900;
+      letter-spacing:.18em;
+    }
+
+  
+    .selection-tabs{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+      margin-bottom:28px;
+    }
+    .selection-stage{
+      background:white;
+      border-radius:18px;
+      padding:20px;
+      box-shadow:var(--sombra);
+      border-top:5px solid var(--turquesa);
+      text-align:center;
+    }
+    .selection-stage:nth-child(2){border-top-color:var(--naranja);}
+    .selection-stage:nth-child(3){border-top-color:var(--cafe);}
+    .evaluation-form{
+      background:white;
+      padding:30px;
+      border-radius:26px;
+      box-shadow:var(--sombra);
+      margin-top:28px;
+    }
+    .evaluation-form h3{
+      color:var(--cafe);
+      margin-bottom:8px;
+    }
+    .star-block{
+      margin:22px 0;
+      border:1px solid #dce7e8;
+      border-radius:18px;
+      overflow:hidden;
+    }
+    .star-block-header{
+      background:linear-gradient(135deg,var(--turquesa),var(--turquesa-oscuro));
+      color:white;
+      padding:16px 20px;
+    }
+    .star-block-body{
+      padding:20px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:15px;
+    }
+    .star-label{
+      display:inline-grid;
+      place-items:center;
+      width:32px;
+      height:32px;
+      border-radius:50%;
+      background:var(--naranja);
+      color:white;
+      font-weight:900;
+      margin-right:8px;
+    }
+    .rating-row{
+      grid-column:1/-1;
+      padding-top:4px;
+    }
+    .psych-grid{
+      display:grid;
+      gap:14px;
+      margin-top:20px;
+    }
+    .psych-item{
+      padding:18px;
+      border:1px solid #dce7e8;
+      border-radius:16px;
+      background:#fbfdfd;
+    }
+    .psych-options{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:10px;
+    }
+    .psych-options label{
+      font-weight:normal;
+      color:var(--texto);
+    }
+    .result-box{
+      display:none;
+      margin-top:20px;
+      padding:18px;
+      border-radius:16px;
+      background:#eaf8ef;
+      border:1px solid #9bd4ae;
+      color:#175c35;
+      font-weight:700;
+    }
+    .matrix-note{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+      margin-top:18px;
+    }
+    .matrix-note div{
+      padding:14px;
+      border-radius:14px;
+      background:var(--crema);
+      text-align:center;
+    }
+    @media(max-width:800px){
+      .selection-tabs,.matrix-note{grid-template-columns:1fr;}
+      .star-block-body{grid-template-columns:1fr;}
+    }
+
+
+    .locked-section{
+      display:none;
+    }
+    .code-check{
+      display:none;
+      margin-top:20px;
+      padding:22px;
+      border-radius:18px;
+      background:#fff8e8;
+      border:1px solid #f0cd79;
+    }
+    .code-check.show{
+      display:block;
+    }
+    .code-status{
+      margin-top:12px;
+      font-weight:800;
+    }
+
+</style>
 </head>
 
 <body>
@@ -849,6 +1010,8 @@
         <li><a href="#vacantes">Vacantes</a></li>
         <li><a href="#entrevista">Entrevista</a></li>
         <li><a href="#postulacion">Postúlate</a></li>
+        <li><a href="#seleccion">Selección</a></li>
+        <li><a href="#preseleccionados">Matriz</a></li>
       </ul>
     </nav>
   </header>
@@ -954,6 +1117,22 @@
       </div>
     </section>
 
+
+    <section class="section" id="productos" style="background:#fffaf0;">
+      <div class="container">
+        <div class="section-title">
+          <span>Nuestros productos</span>
+          <h2>Bubble tea para todos los gustos</h2>
+          <p>En Capioca cada bebida puede personalizarse con distintos sabores, texturas y toppings.</p>
+        </div>
+        <div class="grid-3">
+          <article class="card"><div class="icon">🧋</div><h3>Bubble tea clásico</h3><p>Bebidas a base de té y leche, acompañadas con tapioca tradicional.</p></article>
+          <article class="card"><div class="icon">🍓</div><h3>Bebidas frutales</h3><p>Opciones refrescantes con sabores frutales, jaleas y perlas explosivas.</p></article>
+          <article class="card"><div class="icon">✨</div><h3>Bebidas personalizadas</h3><p>El cliente puede elegir sabor, nivel de dulzor, textura y toppings.</p></article>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="organizacion">
       <div class="container">
         <div class="section-title">
@@ -1004,12 +1183,10 @@
         <div class="process">
           <article class="step"><div class="step-number">1</div><h3>Necesidad de personal</h3><p>Se detecta y justifica la vacante.</p></article>
           <article class="step"><div class="step-number">2</div><h3>Requisición</h3><p>Se define el perfil, horario y condiciones.</p></article>
-          <article class="step"><div class="step-number">3</div><h3>Reclutamiento interno</h3><p>Se revisan posibles promociones.</p></article>
-          <article class="step"><div class="step-number">4</div><h3>Reclutamiento externo</h3><p>Se difunde la vacante en medios autorizados.</p></article>
-          <article class="step"><div class="step-number">5</div><h3>Revisión documental</h3><p>Se verifican requisitos y documentos.</p></article>
-          <article class="step"><div class="step-number">6</div><h3>Evaluación</h3><p>Se valoran conocimientos, habilidades y actitudes.</p></article>
-          <article class="step"><div class="step-number">7</div><h3>Entrevista STAR</h3><p>Se analizan experiencias y competencias.</p></article>
-          <article class="step"><div class="step-number">8</div><h3>Contratación e inducción</h3><p>Se formaliza e integra al nuevo colaborador.</p></article>
+          <article class="step"><div class="step-number">3</div><h3>Reclutamiento externo</h3><p>Se difunde la vacante en medios autorizados.</p></article>
+          <article class="step"><div class="step-number">4</div><h3>Revisión documental</h3><p>Se verifican requisitos y documentos.</p></article>
+          <article class="step"><div class="step-number">5</div><h3>Evaluación</h3><p>Se valoran conocimientos, habilidades y actitudes.</p></article>
+          <article class="step"><div class="step-number">6</div><h3>Contratación e inducción</h3><p>Se formaliza e integra al nuevo colaborador.</p></article>
         </div>
       </div>
     </section>
@@ -1022,33 +1199,7 @@
           <p>Consulta el perfil, los requisitos y la documentación necesaria para participar.</p>
         </div>
 
-        <div class="jobs">
-          <article class="job">
-            <div class="job-head">
-              <span>Convocatoria interna</span>
-              <h3>Encargado del Área Operativa</h3>
-            </div>
-            <div class="job-body">
-              <h4>Funciones principales</h4>
-              <ul>
-                <li>Coordinar las actividades operativas del foodtruck.</li>
-                <li>Supervisar insumos, inventarios, higiene y calidad.</li>
-                <li>Organizar al personal operativo y dar seguimiento a proveedores.</li>
-                <li>Reducir desperdicios y mejorar el uso de los recursos.</li>
-              </ul>
-
-              <h4>Perfil</h4>
-              <ul>
-                <li>Bachillerato concluido.</li>
-                <li>Experiencia previa en la operación del foodtruck.</li>
-                <li>Liderazgo, organización, comunicación y toma de decisiones.</li>
-                <li>Responsabilidad, compromiso y actitud de servicio.</li>
-              </ul>
-
-              <a href="#postulacion" class="btn btn-primary" style="margin-top:22px;">Postularme</a>
-            </div>
-          </article>
-
+        <div class="jobs" style="grid-template-columns:1fr;max-width:780px;margin:auto;">
           <article class="job">
             <div class="job-head">
               <span>Convocatoria externa</span>
@@ -1078,126 +1229,263 @@
       </div>
     </section>
 
-    <section class="section" id="entrevista" style="background:var(--crema);">
+    <section class="section" id="proceso-seleccion" style="background:var(--crema);">
       <div class="container">
         <div class="section-title">
-          <span>Selección</span>
-          <h2>Entrevista por competencias</h2>
-          <p>La entrevista se realiza mediante la metodología STAR para conocer cómo actúa el candidato en situaciones reales.</p>
+          <span>Proceso de selección</span>
+          <h2>Evaluación integral del candidato</h2>
+          <p>Después de validar la documentación, el candidato continúa con entrevista STAR, prueba psicológica y matriz de decisión.</p>
         </div>
-
-        <div class="interview-wrap">
-          <div class="star">
-            <h3>Metodología STAR</h3>
-            <p>
-              Cada respuesta debe explicar una experiencia concreta y demostrar de qué manera
-              la persona resolvió una situación laboral.
-            </p>
-
-            <div class="star-grid">
-              <div class="star-item"><strong>S</strong>Situación</div>
-              <div class="star-item"><strong>T</strong>Tarea</div>
-              <div class="star-item"><strong>A</strong>Acción</div>
-              <div class="star-item"><strong>R</strong>Resultado</div>
-            </div>
-          </div>
-
-          <div class="competencies">
-            <h3>Competencias evaluadas</h3>
-            <div class="chips">
-              <span class="chip">Atención al cliente</span>
-              <span class="chip">Trabajo en equipo</span>
-              <span class="chip">Honestidad</span>
-              <span class="chip">Comunicación</span>
-              <span class="chip">Resolución de problemas</span>
-              <span class="chip">Trabajo bajo presión</span>
-            </div>
-
-            <h3 style="margin-top:28px;">Ejemplo de pregunta</h3>
-            <p>
-              Cuéntanos sobre una ocasión en la que un cliente presentó una queja.
-              ¿Qué hiciste y cuál fue el resultado?
-            </p>
-          </div>
+        <div class="selection-tabs">
+          <div class="selection-stage"><div class="icon" style="margin:0 auto 12px;">⭐</div><h3>Entrevista STAR</h3><p>Evalúa cinco competencias mediante experiencias reales.</p></div>
+          <div class="selection-stage"><div class="icon" style="margin:0 auto 12px;">🧠</div><h3>Prueba psicológica</h3><p>Valora responsabilidad, estabilidad, servicio y trabajo en equipo.</p></div>
+          <div class="selection-stage"><div class="icon" style="margin:0 auto 12px;">📊</div><h3>Matriz de decisión</h3><p>Integra los resultados y emite el veredicto final.</p></div>
         </div>
       </div>
     </section>
 
     <section class="section application" id="postulacion">
       <div class="container">
-        <div class="section-title">
-          <span>Únete al equipo</span>
-          <h2>Formulario de postulación</h2>
-          <p>Completa tus datos para participar en el proceso de reclutamiento de Capioca.</p>
-        </div>
-
+        <div class="section-title"><span>Únete al equipo</span><h2>Formulario de postulación</h2><p>Completa tus datos generales, académicos y laborales.</p></div>
         <form class="form-card" id="applicationForm">
+          <h3 style="color:var(--cafe);margin-bottom:18px;">Datos generales</h3>
           <div class="form-grid">
-            <div class="field">
-              <label for="nombre">Nombre completo</label>
-              <input id="nombre" name="nombre" type="text" required />
-            </div>
-
-            <div class="field">
-              <label for="edad">Edad</label>
-              <input id="edad" name="edad" type="number" min="18" max="70" required />
-            </div>
-
-            <div class="field">
-              <label for="correo">Correo electrónico</label>
-              <input id="correo" name="correo" type="email" required />
-            </div>
-
-            <div class="field">
-              <label for="telefono">Teléfono</label>
-              <input id="telefono" name="telefono" type="tel" pattern="[0-9]{10}" placeholder="10 dígitos" required />
-            </div>
-
-            <div class="field">
-              <label for="vacante">Vacante</label>
-              <select id="vacante" name="vacante" required>
-                <option value="">Selecciona una opción</option>
-                <option>Encargado del Área Operativa</option>
-                <option>Auxiliar de Caja y Atención al Cliente</option>
-              </select>
-            </div>
-
-            <div class="field">
-              <label for="escolaridad">Escolaridad</label>
-              <select id="escolaridad" name="escolaridad" required>
-                <option value="">Selecciona una opción</option>
-                <option>Secundaria</option>
-                <option>Bachillerato concluido</option>
-                <option>Licenciatura en curso</option>
-                <option>Licenciatura concluida</option>
-              </select>
-            </div>
-
-            <div class="field full">
-              <label for="experiencia">Experiencia laboral</label>
-              <textarea id="experiencia" name="experiencia" placeholder="Describe brevemente tu experiencia en atención al cliente, caja, ventas o alimentos." required></textarea>
-            </div>
-
-            <div class="field full">
-              <label for="star">Pregunta de entrevista</label>
-              <textarea id="star" name="star" placeholder="Cuéntanos sobre una situación en la que resolviste un problema con un cliente. Explica la situación, tu tarea, la acción que realizaste y el resultado." required></textarea>
-            </div>
-
-            <div class="field full">
-              <label for="cv">Currículum vitae</label>
-              <input id="cv" name="cv" type="file" accept=".pdf,.doc,.docx" required />
-            </div>
+            <div class="field"><label for="nombre">Nombre completo</label><input id="nombre" required></div>
+            <div class="field"><label for="edad">Edad</label><input id="edad" type="number" min="18" max="70" required></div>
+            <div class="field"><label for="correo">Correo electrónico</label><input id="correo" type="email" required></div>
+            <div class="field"><label for="telefono">Teléfono</label><input id="telefono" type="tel" pattern="[0-9]{10}" placeholder="10 dígitos" required></div>
+            <div class="field"><label for="vacante">Vacante</label><select id="vacante" required><option value="">Selecciona</option><option>Auxiliar de Caja y Atención al Cliente</option></select></div>
+            <div class="field"><label for="disponibilidad">Disponibilidad de horario</label><select id="disponibilidad" required><option value="">Selecciona</option><option>Sí</option><option>No</option></select></div>
           </div>
-
-          <p class="form-note">
-            Aviso: esta versión funciona como demostración escolar. La información no se envía a un servidor real.
-          </p>
-
+          <h3 style="color:var(--cafe);margin:28px 0 18px;">Datos académicos</h3>
+          <div class="form-grid">
+            <div class="field"><label for="escolaridad">Último grado de estudios</label><select id="escolaridad" required><option value="">Selecciona</option><option>Secundaria</option><option>Bachillerato en curso</option><option>Bachillerato concluido</option><option>Licenciatura en curso</option><option>Licenciatura concluida</option></select></div>
+            <div class="field"><label for="titulo">Título o especialidad</label><input id="titulo" placeholder="Ej. Bachillerato general" required></div>
+          </div>
+          <h3 style="color:var(--cafe);margin:28px 0 18px;">Datos laborales</h3>
+          <div class="form-grid">
+            <div class="field"><label for="mesesExperiencia">Meses de experiencia</label><input id="mesesExperiencia" type="number" min="0" max="600" required></div>
+            <div class="field"><label for="manejoCaja">¿Tiene experiencia en caja?</label><select id="manejoCaja" required><option value="">Selecciona</option><option>Sí</option><option>No</option></select></div>
+            <div class="field full"><label for="experiencia">Experiencia laboral</label><textarea id="experiencia" required></textarea></div>
+            <div class="field full"><label for="motivo">¿Por qué deseas postularte?</label><textarea id="motivo" required></textarea></div>
+            
+            <div class="field full">
+              <h3 style="color:var(--cafe);margin:10px 0 4px;">Documentación requerida</h3>
+              <p class="form-note" style="margin-bottom:10px;">Adjunta los seis documentos solicitados y captura tu RFC y tu NSS.</p>
+            </div>
+            <div class="field"><label for="solicitudEmpleo">Solicitud de empleo</label><input id="solicitudEmpleo" type="file" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" required></div>
+            <div class="field"><label for="cv">Currículum vitae</label><input id="cv" type="file" accept=".pdf,.doc,.docx" required></div>
+            <div class="field"><label for="identificacion">Identificación oficial</label><input id="identificacion" type="file" accept=".pdf,.jpg,.jpeg,.png" required></div>
+            <div class="field"><label for="curp">CURP</label><input id="curp" type="file" accept=".pdf,.jpg,.jpeg,.png" required></div>
+            <div class="field">
+              <label for="rfc">RFC</label>
+              <input id="rfc" name="rfc" type="text" maxlength="13" placeholder="Ej. MAMS080101ABC" required>
+            </div>
+            <div class="field"><label for="constanciaFiscal">Constancia de Situación Fiscal</label><input id="constanciaFiscal" type="file" accept=".pdf,.jpg,.jpeg,.png" required></div>
+            <div class="field">
+<label for="nss">Número de Seguridad Social (NSS)</label>
+<input id="nss" name="nss" type="text" maxlength="11" placeholder="Ej. 12345678901" required>
+</div>
+            <div class="field"><label for="comprobanteDomicilio">Comprobante de domicilio</label><input id="comprobanteDomicilio" type="file" accept=".pdf,.jpg,.jpeg,.png" required></div>
+          </div>
+          <p class="form-note">Versión escolar: la página verifica que se adjunten siete documentos y que el RFC sea capturado correctamente. Los archivos no se almacenan en GitHub; únicamente se registran sus nombres en este navegador.</p>
           <button type="submit" class="btn btn-primary" style="margin-top:20px;">Enviar postulación</button>
-          <div class="success" id="successMessage">
-            ¡Solicitud registrada correctamente! Gracias por tu interés en formar parte de Capioca.
+          <div class="success" id="successMessage"></div>
+          <div class="verification-panel" id="verificationPanel">
+            <h3 id="verificationTitle"></h3>
+            <p id="verificationText"></p>
+            <div>
+              <a class="btn btn-primary" id="whatsappBtn" href="#" target="_blank" rel="noopener" style="display:none;margin-top:8px;">
+                Enviar código por WhatsApp
+              </a>
+            </div>
+
+            <div class="code-check" id="codeCheck">
+              <h3 style="color:var(--cafe);">Ingresa el código de verificación</h3>
+              <p>Escribe el código de 6 dígitos que fue enviado al número de WhatsApp registrado.</p>
+              <div class="form-grid" style="margin-top:14px;">
+                <div class="field">
+                  <label for="codeInput">Código recibido</label>
+                  <input id="codeInput" type="text" inputmode="numeric" maxlength="6" placeholder="000000">
+                </div>
+                <div class="field" style="justify-content:flex-end;">
+                  <button type="button" class="btn btn-primary" id="verifyCodeBtn">Verificar código</button>
+                </div>
+              </div>
+              <div class="code-status" id="codeStatus"></div>
+            </div>
           </div>
         </form>
+      </div>
+    </section>
+
+    
+    <section class="section locked-section" id="seleccion">
+      <div class="container">
+        <div class="section-title">
+          <span>Evaluación del candidato</span>
+          <h2>Entrevista STAR y prueba psicológica</h2>
+          <p>Selecciona a un candidato registrado, captura sus resultados y guárdalos para la matriz final.</p>
+        </div>
+
+        <form class="evaluation-form" id="starForm">
+          <h3>1. Entrevista STAR — Evaluación por competencias</h3>
+          <p>Escala del entrevistador: Excelente 4, Bueno 3, Regular 2 y Deficiente 1.</p>
+
+          <div class="form-grid" style="margin-top:18px;">
+            <div class="field">
+              <label for="starCandidate">Candidato</label>
+              <select id="starCandidate" required><option value="">Selecciona un candidato</option></select>
+            </div>
+            <div class="field">
+              <label for="interviewer">Entrevistador</label>
+              <input id="interviewer" type="text" required>
+            </div>
+            <div class="field">
+              <label for="interviewDate">Fecha</label>
+              <input id="interviewDate" type="date" required>
+            </div>
+          </div>
+
+          <div class="star-block">
+            <div class="star-block-header"><strong>Pregunta 1 — Atención al cliente</strong></div>
+            <div class="star-block-body">
+              <div class="field"><label><span class="star-label">S</span>Situación</label><textarea id="star1s" placeholder="Cuéntame sobre una ocasión en la que un cliente quedó inconforme con el servicio o producto." required></textarea></div>
+              <div class="field"><label><span class="star-label">T</span>Tarea</label><textarea id="star1t" placeholder="¿Cuál era tu responsabilidad en ese momento?" required></textarea></div>
+              <div class="field"><label><span class="star-label">A</span>Acción</label><textarea id="star1a" placeholder="¿Qué hiciste para atender al cliente y solucionar el problema?" required></textarea></div>
+              <div class="field"><label><span class="star-label">R</span>Resultado</label><textarea id="star1r" placeholder="¿Cuál fue el resultado y qué aprendiste?" required></textarea></div>
+              <div class="field rating-row"><label>Evaluación del entrevistador</label><select class="star-rating" id="starRating1" required><option value="">Selecciona</option><option value="4">Excelente (4)</option><option value="3">Bueno (3)</option><option value="2">Regular (2)</option><option value="1">Deficiente (1)</option></select></div>
+            </div>
+          </div>
+
+          <div class="star-block">
+            <div class="star-block-header"><strong>Pregunta 2 — Trabajo en equipo</strong></div>
+            <div class="star-block-body">
+              <div class="field"><label><span class="star-label">S</span>Situación</label><textarea id="star2s" placeholder="Describe una situación de alta carga de trabajo o demanda de clientes." required></textarea></div>
+              <div class="field"><label><span class="star-label">T</span>Tarea</label><textarea id="star2t" placeholder="¿Cuál era tu función dentro del equipo?" required></textarea></div>
+              <div class="field"><label><span class="star-label">A</span>Acción</label><textarea id="star2a" placeholder="¿Qué hiciste para apoyar a tus compañeros?" required></textarea></div>
+              <div class="field"><label><span class="star-label">R</span>Resultado</label><textarea id="star2r" placeholder="¿Cuál fue el resultado y qué aprendiste?" required></textarea></div>
+              <div class="field rating-row"><label>Evaluación del entrevistador</label><select class="star-rating" id="starRating2" required><option value="">Selecciona</option><option value="4">Excelente (4)</option><option value="3">Bueno (3)</option><option value="2">Regular (2)</option><option value="1">Deficiente (1)</option></select></div>
+            </div>
+          </div>
+
+          <div class="star-block">
+            <div class="star-block-header"><strong>Pregunta 3 — Resolución de problemas</strong></div>
+            <div class="star-block-body">
+              <div class="field"><label><span class="star-label">S</span>Situación</label><textarea id="star3s" placeholder="Háblame de un problema inesperado durante tu trabajo." required></textarea></div>
+              <div class="field"><label><span class="star-label">T</span>Tarea</label><textarea id="star3t" placeholder="¿Qué responsabilidad tenías?" required></textarea></div>
+              <div class="field"><label><span class="star-label">A</span>Acción</label><textarea id="star3a" placeholder="¿Qué acciones realizaste para resolverlo?" required></textarea></div>
+              <div class="field"><label><span class="star-label">R</span>Resultado</label><textarea id="star3r" placeholder="¿Cuál fue el resultado y qué harías diferente?" required></textarea></div>
+              <div class="field rating-row"><label>Evaluación del entrevistador</label><select class="star-rating" id="starRating3" required><option value="">Selecciona</option><option value="4">Excelente (4)</option><option value="3">Bueno (3)</option><option value="2">Regular (2)</option><option value="1">Deficiente (1)</option></select></div>
+            </div>
+          </div>
+
+          <div class="star-block">
+            <div class="star-block-header"><strong>Pregunta 4 — Trabajo bajo presión</strong></div>
+            <div class="star-block-body">
+              <div class="field"><label><span class="star-label">S</span>Situación</label><textarea id="star4s" placeholder="Cuéntame sobre un momento de presión por exceso de clientes o poco tiempo." required></textarea></div>
+              <div class="field"><label><span class="star-label">T</span>Tarea</label><textarea id="star4t" placeholder="¿Cuál era tu responsabilidad?" required></textarea></div>
+              <div class="field"><label><span class="star-label">A</span>Acción</label><textarea id="star4a" placeholder="¿Cómo organizaste tu trabajo?" required></textarea></div>
+              <div class="field"><label><span class="star-label">R</span>Resultado</label><textarea id="star4r" placeholder="¿Qué resultados obtuviste y cómo manejaste la presión?" required></textarea></div>
+              <div class="field rating-row"><label>Evaluación del entrevistador</label><select class="star-rating" id="starRating4" required><option value="">Selecciona</option><option value="4">Excelente (4)</option><option value="3">Bueno (3)</option><option value="2">Regular (2)</option><option value="1">Deficiente (1)</option></select></div>
+            </div>
+          </div>
+
+          <div class="star-block">
+            <div class="star-block-header"><strong>Pregunta 5 — Honestidad y responsabilidad</strong></div>
+            <div class="star-block-body">
+              <div class="field"><label><span class="star-label">S</span>Situación</label><textarea id="star5s" placeholder="Describe una ocasión en la que cometiste un error o detectaste un problema de dinero o inventario." required></textarea></div>
+              <div class="field"><label><span class="star-label">T</span>Tarea</label><textarea id="star5t" placeholder="¿Cuál era tu responsabilidad?" required></textarea></div>
+              <div class="field"><label><span class="star-label">A</span>Acción</label><textarea id="star5a" placeholder="¿Qué hiciste para actuar correctamente?" required></textarea></div>
+              <div class="field"><label><span class="star-label">R</span>Resultado</label><textarea id="star5r" placeholder="¿Cuál fue el resultado y qué enseñanza obtuviste?" required></textarea></div>
+              <div class="field rating-row"><label>Evaluación del entrevistador</label><select class="star-rating" id="starRating5" required><option value="">Selecciona</option><option value="4">Excelente (4)</option><option value="3">Bueno (3)</option><option value="2">Regular (2)</option><option value="1">Deficiente (1)</option></select></div>
+            </div>
+          </div>
+
+          <div class="field full">
+            <label for="starObservations">Observaciones generales</label>
+            <textarea id="starObservations" placeholder="Anota fortalezas, áreas de mejora y observaciones de la entrevista."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="margin-top:18px;">Guardar entrevista STAR</button>
+          <div class="result-box" id="starResult"></div>
+        </form>
+
+        <form class="evaluation-form" id="psychForm">
+          <h3>2. Prueba psicológica laboral</h3>
+          <p>Selecciona la respuesta que mejor describa al candidato. Escala: Siempre 4, Casi siempre 3, Algunas veces 2 y Nunca 1.</p>
+
+          <div class="field" style="margin-top:18px;max-width:430px;">
+            <label for="psychCandidate">Candidato</label>
+            <select id="psychCandidate" required><option value="">Selecciona un candidato</option></select>
+          </div>
+
+          <div class="psych-grid" id="psychQuestions">
+            <div class="psych-item"><strong>1. Me gusta trabajar en equipo.</strong><div class="psych-options"><label><input type="radio" name="p1" value="4" required> Siempre</label><label><input type="radio" name="p1" value="3"> Casi siempre</label><label><input type="radio" name="p1" value="2"> Algunas veces</label><label><input type="radio" name="p1" value="1"> Nunca</label></div></div>
+            <div class="psych-item"><strong>2. Mantengo la calma cuando tengo mucha carga de trabajo.</strong><div class="psych-options"><label><input type="radio" name="p2" value="4" required> Siempre</label><label><input type="radio" name="p2" value="3"> Casi siempre</label><label><input type="radio" name="p2" value="2"> Algunas veces</label><label><input type="radio" name="p2" value="1"> Nunca</label></div></div>
+            <div class="psych-item"><strong>3. Me considero una persona organizada.</strong><div class="psych-options"><label><input type="radio" name="p3" value="4" required> Siempre</label><label><input type="radio" name="p3" value="3"> Casi siempre</label><label><input type="radio" name="p3" value="2"> Algunas veces</label><label><input type="radio" name="p3" value="1"> Nunca</label></div></div>
+            <div class="psych-item"><strong>4. Cumplo mis responsabilidades sin necesidad de supervisión.</strong><div class="psych-options"><label><input type="radio" name="p4" value="4" required> Siempre</label><label><input type="radio" name="p4" value="3"> Casi siempre</label><label><input type="radio" name="p4" value="2"> Algunas veces</label><label><input type="radio" name="p4" value="1"> Nunca</label></div></div>
+            <div class="psych-item"><strong>5. Me adapto fácilmente a los cambios.</strong><div class="psych-options"><label><input type="radio" name="p5" value="4" required> Siempre</label><label><input type="radio" name="p5" value="3"> Casi siempre</label><label><input type="radio" name="p5" value="2"> Algunas veces</label><label><input type="radio" name="p5" value="1"> Nunca</label></div></div>
+            <div class="psych-item"><strong>6. Trato a los clientes con respeto incluso cuando están molestos.</strong><div class="psych-options"><label><input type="radio" name="p6" value="4" required> Siempre</label><label><input type="radio" name="p6" value="3"> Casi siempre</label><label><input type="radio" name="p6" value="2"> Algunas veces</label><label><input type="radio" name="p6" value="1"> Nunca</label></div></div>
+            <div class="psych-item"><strong>7. Reconozco mis errores y busco corregirlos.</strong><div class="psych-options"><label><input type="radio" name="p7" value="4" required> Siempre</label><label><input type="radio" name="p7" value="3"> Casi siempre</label><label><input type="radio" name="p7" value="2"> Algunas veces</label><label><input type="radio" name="p7" value="1"> Nunca</label></div></div>
+            <div class="psych-item"><strong>8. Puedo tomar decisiones rápidas sin perder el control.</strong><div class="psych-options"><label><input type="radio" name="p8" value="4" required> Siempre</label><label><input type="radio" name="p8" value="3"> Casi siempre</label><label><input type="radio" name="p8" value="2"> Algunas veces</label><label><input type="radio" name="p8" value="1"> Nunca</label></div></div>
+            <div class="psych-item"><strong>9. Cuido el dinero, materiales e insumos que están bajo mi responsabilidad.</strong><div class="psych-options"><label><input type="radio" name="p9" value="4" required> Siempre</label><label><input type="radio" name="p9" value="3"> Casi siempre</label><label><input type="radio" name="p9" value="2"> Algunas veces</label><label><input type="radio" name="p9" value="1"> Nunca</label></div></div>
+            <div class="psych-item"><strong>10. Mantengo una actitud de servicio durante toda la jornada.</strong><div class="psych-options"><label><input type="radio" name="p10" value="4" required> Siempre</label><label><input type="radio" name="p10" value="3"> Casi siempre</label><label><input type="radio" name="p10" value="2"> Algunas veces</label><label><input type="radio" name="p10" value="1"> Nunca</label></div></div>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="margin-top:20px;">Guardar prueba psicológica</button>
+          <div class="result-box" id="psychResult"></div>
+        </form>
+      </div>
+    </section>
+
+<section class="section locked-section" id="preseleccionados" style="background:#f5fbfb;">
+      <div class="container">
+        <div class="section-title">
+          <span>Resultado final</span>
+          <h2>Matriz de decisión</h2>
+          <p>Integra perfil, entrevista STAR y prueba psicológica para determinar quién continúa en el proceso.</p>
+        </div>
+        <div class="form-card">
+          <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;margin-bottom:20px;">
+            <div>
+              <h3 style="color:var(--cafe);">Resultados de candidatos</h3>
+              <p style="color:#647178;">El veredicto se genera automáticamente cuando el candidato completa las tres evaluaciones.</p>
+            </div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+              <button class="btn btn-secondary" type="button" id="demoBtn">Agregar ejemplo completo</button>
+              <button class="btn btn-secondary" type="button" id="clearBtn">Borrar registros</button>
+            </div>
+          </div>
+
+          <div style="overflow-x:auto;">
+            <table style="width:100%;border-collapse:collapse;min-width:1150px;">
+              <thead>
+                <tr style="background:var(--turquesa);color:white;">
+                  <th style="padding:13px;text-align:left;">Candidato</th>
+                  <th style="padding:13px;text-align:left;">Título</th>
+                  <th style="padding:13px;text-align:left;">Experiencia</th>
+                  <th style="padding:13px;text-align:left;">Edad</th>
+                  <th style="padding:13px;text-align:left;">Perfil</th>
+                  <th style="padding:13px;text-align:left;">STAR</th>
+                  <th style="padding:13px;text-align:left;">Psicológica</th>
+                  <th style="padding:13px;text-align:left;">Resultado final</th>
+                  <th style="padding:13px;text-align:left;">Veredicto</th>
+                </tr>
+              </thead>
+              <tbody id="candidateBody"></tbody>
+            </table>
+          </div>
+
+          <div id="emptyState" style="text-align:center;padding:28px;color:#68767b;">Todavía no hay candidatos registrados.</div>
+
+          <div class="matrix-note">
+            <div><strong>Perfil del puesto</strong><br>30%</div>
+            <div><strong>Entrevista STAR</strong><br>40%</div>
+            <div><strong>Prueba psicológica</strong><br>30%</div>
+          </div>
+          <p class="form-note" style="margin-top:14px;">Se considera aprobado al candidato que obtiene un resultado final igual o superior a 70%.</p>
+        </div>
       </div>
     </section>
 
@@ -1242,43 +1530,321 @@
   <button class="top-btn" id="topBtn" aria-label="Volver arriba">↑</button>
 
   <script>
-    const menuBtn = document.getElementById("menuBtn");
-    const menu = document.getElementById("menu");
-    const topBtn = document.getElementById("topBtn");
-    const form = document.getElementById("applicationForm");
-    const successMessage = document.getElementById("successMessage");
+    const menuBtn=document.getElementById("menuBtn");
+    const menu=document.getElementById("menu");
+    const topBtn=document.getElementById("topBtn");
+    const form=document.getElementById("applicationForm");
+    const successMessage=document.getElementById("successMessage");
+    const candidateBody=document.getElementById("candidateBody");
+    const emptyState=document.getElementById("emptyState");
+    const clearBtn=document.getElementById("clearBtn");
+    const demoBtn=document.getElementById("demoBtn");
+    const verificationPanel=document.getElementById("verificationPanel");
+    const verificationTitle=document.getElementById("verificationTitle");
+    const verificationText=document.getElementById("verificationText");
+    const whatsappBtn=document.getElementById("whatsappBtn");
+    const codeCheck=document.getElementById("codeCheck");
+    const codeInput=document.getElementById("codeInput");
+    const verifyCodeBtn=document.getElementById("verifyCodeBtn");
+    const codeStatus=document.getElementById("codeStatus");
+    const selectionSection=document.getElementById("seleccion");
+    const matrixSection=document.getElementById("preseleccionados");
+    const starForm=document.getElementById("starForm");
+    const psychForm=document.getElementById("psychForm");
+    const starCandidate=document.getElementById("starCandidate");
+    const psychCandidate=document.getElementById("psychCandidate");
+    const starResult=document.getElementById("starResult");
+    const psychResult=document.getElementById("psychResult");
+    let currentVerificationCode="";
 
-    menuBtn.addEventListener("click", () => {
-      menu.classList.toggle("open");
-    });
+    menuBtn.addEventListener("click",()=>menu.classList.toggle("open"));
+    document.querySelectorAll(".menu a").forEach(a=>a.addEventListener("click",()=>menu.classList.remove("open")));
+    window.addEventListener("scroll",()=>topBtn.style.display=window.scrollY>500?"block":"none");
+    topBtn.addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
 
-    document.querySelectorAll(".menu a").forEach(link => {
-      link.addEventListener("click", () => menu.classList.remove("open"));
-    });
+    const getCandidates=()=>JSON.parse(localStorage.getItem("capiocaCandidates")||"[]");
+    const saveCandidates=list=>localStorage.setItem("capiocaCandidates",JSON.stringify(list));
 
-    window.addEventListener("scroll", () => {
-      topBtn.style.display = window.scrollY > 500 ? "block" : "none";
-    });
+    function profileScore(d){
+      let points=0;
+      if(Number(d.edad)>=18) points+=20;
+      if(["Bachillerato concluido","Licenciatura en curso","Licenciatura concluida"].includes(d.escolaridad)) points+=25;
+      if(Number(d.mesesExperiencia)>=6) points+=20;
+      else if(Number(d.mesesExperiencia)>0) points+=10;
+      if(d.manejoCaja==="Sí") points+=20;
+      if(d.disponibilidad==="Sí") points+=15;
+      return points;
+    }
 
-    topBtn.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
+    function finalScore(candidate){
+      if(candidate.starScore==null || candidate.psychScore==null) return null;
+      return Math.round(candidate.profileScore*.30 + candidate.starScore*.40 + candidate.psychScore*.30);
+    }
 
-    form.addEventListener("submit", (event) => {
+    function populateCandidateSelectors(){
+      const candidates=getCandidates();
+      [starCandidate,psychCandidate].forEach(select=>{
+        const selected=select.value;
+        select.innerHTML='<option value="">Selecciona un candidato</option>';
+        candidates.forEach((candidate,index)=>{
+          const option=document.createElement("option");
+          option.value=index;
+          option.textContent=candidate.nombre;
+          select.appendChild(option);
+        });
+        if(selected && candidates[selected]) select.value=selected;
+      });
+    }
+
+    function badge(text,type){
+      const styles={
+        ok:"background:#e7f8ee;color:#17663a",
+        no:"background:#fdeaea;color:#8a2424",
+        pending:"background:#fff5d9;color:#765200"
+      };
+      return `<span style="${styles[type]};padding:8px 11px;border-radius:999px;font-weight:800;white-space:nowrap">${text}</span>`;
+    }
+
+    function render(){
+      const candidates=getCandidates();
+      candidateBody.innerHTML="";
+      emptyState.style.display=candidates.length?"none":"block";
+
+      candidates.forEach(candidate=>{
+        const final=finalScore(candidate);
+        let verdict;
+        if(final==null) verdict=badge("Evaluación pendiente","pending");
+        else if(final>=70) verdict=badge("Aprobado","ok");
+        else verdict=badge("No aprobado","no");
+
+        const row=document.createElement("tr");
+        row.style.borderBottom="1px solid #dfe8e9";
+        row.innerHTML=`
+          <td style="padding:13px"><strong>${candidate.nombre}</strong></td>
+          <td style="padding:13px">${candidate.titulo||"—"}</td>
+          <td style="padding:13px">${candidate.mesesExperiencia||0} meses</td>
+          <td style="padding:13px">${candidate.edad||"—"}</td>
+          <td style="padding:13px"><strong>${candidate.profileScore??candidate.score??0}%</strong></td>
+          <td style="padding:13px">${candidate.starScore!=null?`<strong>${candidate.starScore}%</strong>`:badge("Pendiente","pending")}</td>
+          <td style="padding:13px">${candidate.psychScore!=null?`<strong>${candidate.psychScore}%</strong>`:badge("Pendiente","pending")}</td>
+          <td style="padding:13px">${final!=null?`<strong>${final}%</strong><div style="height:8px;background:#e5ecee;border-radius:999px;margin-top:7px;overflow:hidden"><div style="height:100%;width:${final}%;background:var(--naranja)"></div></div>`:"—"}</td>
+          <td style="padding:13px">${verdict}</td>`;
+        candidateBody.appendChild(row);
+      });
+
+      populateCandidateSelectors();
+    }
+
+    form.addEventListener("submit",event=>{
       event.preventDefault();
+      verificationPanel.className="verification-panel";
+      whatsappBtn.style.display="none";
+      codeCheck.classList.remove("show");
+      codeInput.value="";
+      codeStatus.textContent="";
+      selectionSection.classList.add("locked-section");
+      matrixSection.classList.add("locked-section");
+      successMessage.style.display="none";
 
-      if (!form.checkValidity()) {
+      if(!form.checkValidity()){
         form.reportValidity();
+        verificationPanel.classList.add("error");
+        verificationTitle.textContent="Documentación incompleta";
+        verificationText.textContent="Completa todos los campos, captura tu RFC y NSS, y adjunta los seis documentos requeridos.";
         return;
       }
 
-      successMessage.style.display = "block";
-      successMessage.scrollIntoView({ behavior: "smooth", block: "center" });
+      const documentos=[
+        {id:"solicitudEmpleo",nombre:"Solicitud de empleo"},
+        {id:"cv",nombre:"Currículum vitae"},
+        {id:"identificacion",nombre:"Identificación oficial"},
+        {id:"curp",nombre:"CURP"},
+        {id:"constanciaFiscal",nombre:"Constancia de Situación Fiscal"},
+        {id:"comprobanteDomicilio",nombre:"Comprobante de domicilio"}
+      ];
 
-      setTimeout(() => {
-        form.reset();
-      }, 700);
+      const faltantes=[];
+      const errores=[];
+      const nombresArchivos={};
+      const extensionesPermitidas=["pdf","doc","docx","jpg","jpeg","png"];
+      const maximo=5*1024*1024;
+
+      documentos.forEach(doc=>{
+        const archivo=document.getElementById(doc.id).files[0];
+        if(!archivo){faltantes.push(doc.nombre);return;}
+        const extension=archivo.name.split(".").pop().toLowerCase();
+        if(!extensionesPermitidas.includes(extension)) errores.push(`${doc.nombre}: formato no permitido`);
+        if(archivo.size>maximo) errores.push(`${doc.nombre}: supera 5 MB`);
+        nombresArchivos[doc.id]=archivo.name;
+      });
+
+      const telefonoLimpio=telefono.value.replace(/\D/g,"");
+      if(telefonoLimpio.length!==10) errores.push("El número de WhatsApp debe tener 10 dígitos");
+
+      const rfcLimpio=rfc.value.trim().toUpperCase();
+      if(!/^[A-ZÑ&]{3,4}\d{6}[A-Z0-9]{3}$/.test(rfcLimpio)) errores.push("El RFC debe tener un formato válido de 12 o 13 caracteres");
+
+      const nssLimpio=nss.value.replace(/\D/g,"");
+      if(nssLimpio.length!==11) errores.push("El NSS debe contener 11 dígitos");
+
+      if(faltantes.length||errores.length){
+        verificationPanel.classList.add("error");
+        verificationTitle.textContent="La documentación no está completa";
+        let message="";
+        if(faltantes.length) message+="<strong>Faltan estos documentos:</strong><br>"+faltantes.map(x=>"• "+x).join("<br>");
+        if(errores.length){
+          if(message) message+="<br><br>";
+          message+="<strong>Revisa lo siguiente:</strong><br>"+errores.map(x=>"• "+x).join("<br>");
+        }
+        verificationText.innerHTML=message;
+        return;
+      }
+
+      const code=String(Math.floor(100000+Math.random()*900000));
+      const whatsappMessage=encodeURIComponent(`Hola ${nombre.value.trim()}. Recibimos correctamente tu documentación para la vacante de ${vacante.value} en Capioca. Tu código de verificación es: ${code}. Conserva este código para continuar con entrevista STAR y prueba psicológica.`);
+
+      const candidate={
+        nombre:nombre.value.trim(),
+        edad:Number(edad.value),
+        correo:correo.value.trim(),
+        telefono:telefonoLimpio,
+        vacante:vacante.value,
+        disponibilidad:disponibilidad.value,
+        escolaridad:escolaridad.value,
+        titulo:titulo.value.trim(),
+        mesesExperiencia:Number(mesesExperiencia.value),
+        manejoCaja:manejoCaja.value,
+        experiencia:experiencia.value.trim(),
+        motivo:motivo.value.trim(),
+        rfc:rfcLimpio,
+        nss:nssLimpio,
+        documentos:nombresArchivos,
+        codigoVerificacion:code,
+        documentacion:"Completa"
+      };
+      candidate.profileScore=profileScore(candidate);
+
+      const candidates=getCandidates();
+      candidates.push(candidate);
+      saveCandidates(candidates);
+      render();
+
+      successMessage.textContent="Postulación registrada. La documentación requerida está completa.";
+      successMessage.style.display="block";
+      verificationPanel.classList.add("ok");
+      verificationTitle.textContent="Documentación completa";
+      verificationText.textContent="La documentación fue validada. Envía el código por WhatsApp y después ingrésalo en esta página para desbloquear el proceso de selección.";
+      currentVerificationCode=code;
+      whatsappBtn.href=`https://wa.me/52${telefonoLimpio}?text=${whatsappMessage}`;
+      whatsappBtn.style.display="inline-flex";
+      codeCheck.classList.add("show");
+      setTimeout(()=>verificationPanel.scrollIntoView({behavior:"smooth",block:"center"}),300);
     });
+
+
+    verifyCodeBtn.addEventListener("click",()=>{
+      const entered=codeInput.value.replace(/\D/g,"");
+
+      if(entered.length!==6){
+        codeStatus.style.color="#862525";
+        codeStatus.textContent="El código debe tener 6 dígitos.";
+        return;
+      }
+
+      if(entered!==currentVerificationCode){
+        codeStatus.style.color="#862525";
+        codeStatus.textContent="El código no es correcto. Revisa el mensaje de WhatsApp e inténtalo nuevamente.";
+        return;
+      }
+
+      codeStatus.style.color="#175c35";
+      codeStatus.textContent="Código verificado correctamente. Ya puedes continuar con el proceso de selección.";
+      selectionSection.classList.remove("locked-section");
+      matrixSection.classList.remove("locked-section");
+
+      setTimeout(()=>{
+        selectionSection.scrollIntoView({behavior:"smooth",block:"start"});
+      },500);
+    });
+
+    starForm.addEventListener("submit",event=>{
+      event.preventDefault();
+      if(!starForm.checkValidity()){starForm.reportValidity();return;}
+
+      const index=Number(starCandidate.value);
+      const candidates=getCandidates();
+      if(!candidates[index]) return;
+
+      const ratings=[1,2,3,4,5].map(n=>Number(document.getElementById(`starRating${n}`).value));
+      const total=ratings.reduce((sum,value)=>sum+value,0);
+      const score=Math.round(total/20*100);
+
+      candidates[index].starScore=score;
+      candidates[index].starInterview={
+        interviewer:interviewer.value.trim(),
+        date:interviewDate.value,
+        observations:starObservations.value.trim(),
+        ratings
+      };
+      saveCandidates(candidates);
+      render();
+
+      starResult.style.display="block";
+      starResult.textContent=`Entrevista guardada. Resultado STAR: ${score}%. ${score>=70?"Aprobado en entrevista.":"No aprobado en entrevista."}`;
+    });
+
+    psychForm.addEventListener("submit",event=>{
+      event.preventDefault();
+      if(!psychForm.checkValidity()){psychForm.reportValidity();return;}
+
+      const index=Number(psychCandidate.value);
+      const candidates=getCandidates();
+      if(!candidates[index]) return;
+
+      const answers=[];
+      for(let i=1;i<=10;i++){
+        answers.push(Number(document.querySelector(`input[name="p${i}"]:checked`).value));
+      }
+      const total=answers.reduce((sum,value)=>sum+value,0);
+      const score=Math.round(total/40*100);
+
+      candidates[index].psychScore=score;
+      candidates[index].psychAnswers=answers;
+      saveCandidates(candidates);
+      render();
+
+      psychResult.style.display="block";
+      psychResult.textContent=`Prueba psicológica guardada. Resultado: ${score}%. ${score>=70?"Perfil favorable.":"Perfil no favorable."}`;
+    });
+
+    clearBtn.addEventListener("click",()=>{
+      if(confirm("¿Deseas borrar todos los candidatos y sus evaluaciones?")){
+        localStorage.removeItem("capiocaCandidates");
+        render();
+      }
+    });
+
+    demoBtn.addEventListener("click",()=>{
+      const candidate={
+        nombre:"Mariana López",
+        edad:21,
+        titulo:"Bachillerato general",
+        mesesExperiencia:12,
+        escolaridad:"Bachillerato concluido",
+        manejoCaja:"Sí",
+        disponibilidad:"Sí",
+        profileScore:100,
+        starScore:85,
+        psychScore:90,
+        documentacion:"Completa"
+      };
+      const candidates=getCandidates();
+      candidates.push(candidate);
+      saveCandidates(candidates);
+      render();
+    });
+
+    render();
   </script>
 </body>
 </html>
