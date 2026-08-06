@@ -990,6 +990,79 @@
       font-weight:800;
     }
 
+
+    .preselection-panel{
+      display:none;
+      margin-top:22px;
+      padding:24px;
+      border-radius:20px;
+      background:#fff;
+      border:1px solid #d9e5e6;
+      box-shadow:var(--sombra);
+    }
+    .preselection-panel.show{display:block;}
+    .preselection-table{
+      width:100%;
+      border-collapse:collapse;
+      min-width:880px;
+    }
+    .preselection-table th{
+      padding:12px;
+      background:var(--turquesa);
+      color:white;
+      text-align:left;
+    }
+    .preselection-table td{
+      padding:12px;
+      border-bottom:1px solid #e2eaeb;
+      vertical-align:top;
+    }
+    .status-ok,.status-no{
+      display:inline-block;
+      padding:7px 10px;
+      border-radius:999px;
+      font-weight:800;
+    }
+    .status-ok{background:#e7f8ee;color:#17663a;}
+    .status-no{background:#fdeaea;color:#8a2424;}
+    .psych-dimension{
+      margin:24px 0;
+      border:1px solid #dce7e8;
+      border-radius:20px;
+      overflow:hidden;
+    }
+    .psych-dimension-header{
+      padding:16px 20px;
+      background:linear-gradient(135deg,var(--turquesa),var(--turquesa-oscuro));
+      color:white;
+    }
+    .psych-dimension-body{
+      padding:18px;
+      display:grid;
+      gap:14px;
+    }
+    .psych-scale{
+      padding:16px;
+      border-radius:16px;
+      background:var(--crema);
+      margin-top:18px;
+    }
+    .dimension-results{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+    }
+    .dimension-results div{
+      padding:14px;
+      border-radius:14px;
+      background:#f4f8f8;
+      text-align:center;
+    }
+    @media(max-width:800px){
+      .dimension-results{grid-template-columns:1fr 1fr;}
+    }
+
 </style>
 </head>
 
@@ -1006,11 +1079,10 @@
       <ul class="menu" id="menu">
         <li><a href="#nosotros">Nosotros</a></li>
         <li><a href="#filosofia">Filosofía</a></li>
-        <li><a href="#proceso">Reclutamiento</a></li>
         <li><a href="#vacantes">Vacantes</a></li>
         <li><a href="#entrevista">Entrevista</a></li>
         <li><a href="#postulacion">Postúlate</a></li>
-        <li><a href="#seleccion">Selección</a></li>
+        <li><a href="#matriz-preseleccion">Preselección</a></li><li><a href="#seleccion">Selección</a></li>
         <li><a href="#preseleccionados">Matriz</a></li>
       </ul>
     </nav>
@@ -1169,27 +1241,7 @@
       </div>
     </section>
 
-    <section class="section" id="proceso" style="background:#f5fbfb;">
-      <div class="container">
-        <div class="section-title">
-          <span>Recursos Humanos</span>
-          <h2>Proceso de reclutamiento y selección</h2>
-          <p>
-            Capioca aplica un procedimiento organizado, objetivo y transparente para atraer,
-            evaluar y seleccionar a las personas más adecuadas.
-          </p>
-        </div>
-
-        <div class="process">
-          <article class="step"><div class="step-number">1</div><h3>Necesidad de personal</h3><p>Se detecta y justifica la vacante.</p></article>
-          <article class="step"><div class="step-number">2</div><h3>Requisición</h3><p>Se define el perfil, horario y condiciones.</p></article>
-          <article class="step"><div class="step-number">3</div><h3>Reclutamiento externo</h3><p>Se difunde la vacante en medios autorizados.</p></article>
-          <article class="step"><div class="step-number">4</div><h3>Revisión documental</h3><p>Se verifican requisitos y documentos.</p></article>
-          <article class="step"><div class="step-number">5</div><h3>Evaluación</h3><p>Se valoran conocimientos, habilidades y actitudes.</p></article>
-          <article class="step"><div class="step-number">6</div><h3>Contratación e inducción</h3><p>Se formaliza e integra al nuevo colaborador.</p></article>
-        </div>
-      </div>
-    </section>
+    
 
     <section class="section" id="vacantes">
       <div class="container">
@@ -1251,7 +1303,7 @@
           <h3 style="color:var(--cafe);margin-bottom:18px;">Datos generales</h3>
           <div class="form-grid">
             <div class="field"><label for="nombre">Nombre completo</label><input id="nombre" required></div>
-            <div class="field"><label for="edad">Edad</label><input id="edad" type="number" min="18" max="70" required></div>
+            <div class="field"><label for="edad">Edad</label><input id="edad" type="number" min="15" max="70" required></div>
             <div class="field"><label for="correo">Correo electrónico</label><input id="correo" type="email" required></div>
             <div class="field"><label for="telefono">Teléfono</label><input id="telefono" type="tel" pattern="[0-9]{10}" placeholder="10 dígitos" required></div>
             <div class="field"><label for="vacante">Vacante</label><select id="vacante" required><option value="">Selecciona</option><option>Auxiliar de Caja y Atención al Cliente</option></select></div>
@@ -1273,22 +1325,22 @@
               <h3 style="color:var(--cafe);margin:10px 0 4px;">Documentación requerida</h3>
               <p class="form-note" style="margin-bottom:10px;">Adjunta los seis documentos solicitados y captura tu RFC y tu NSS.</p>
             </div>
-            <div class="field"><label for="solicitudEmpleo">Solicitud de empleo</label><input id="solicitudEmpleo" type="file" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" required></div>
-            <div class="field"><label for="cv">Currículum vitae</label><input id="cv" type="file" accept=".pdf,.doc,.docx" required></div>
-            <div class="field"><label for="identificacion">Identificación oficial</label><input id="identificacion" type="file" accept=".pdf,.jpg,.jpeg,.png" required></div>
-            <div class="field"><label for="curp">CURP</label><input id="curp" type="file" accept=".pdf,.jpg,.jpeg,.png" required></div>
+            <div class="field"><label for="solicitudEmpleo">Solicitud de empleo</label><input id="solicitudEmpleo" type="file" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"></div>
+            <div class="field"><label for="cv">Currículum vitae</label><input id="cv" type="file" accept=".pdf,.doc,.docx"></div>
+            <div class="field"><label for="identificacion">Identificación oficial</label><input id="identificacion" type="file" accept=".pdf,.jpg,.jpeg,.png"></div>
+            <div class="field"><label for="curp">CURP</label><input id="curp" type="file" accept=".pdf,.jpg,.jpeg,.png"></div>
             <div class="field">
               <label for="rfc">RFC</label>
-              <input id="rfc" name="rfc" type="text" maxlength="13" placeholder="Ej. MAMS080101ABC" required>
+              <input id="rfc" name="rfc" type="text" maxlength="13" placeholder="Ej. MAMS080101ABC">
             </div>
-            <div class="field"><label for="constanciaFiscal">Constancia de Situación Fiscal</label><input id="constanciaFiscal" type="file" accept=".pdf,.jpg,.jpeg,.png" required></div>
+            <div class="field"><label for="constanciaFiscal">Constancia de Situación Fiscal</label><input id="constanciaFiscal" type="file" accept=".pdf,.jpg,.jpeg,.png"></div>
             <div class="field">
 <label for="nss">Número de Seguridad Social (NSS)</label>
-<input id="nss" name="nss" type="text" maxlength="11" placeholder="Ej. 12345678901" required>
+<input id="nss" name="nss" type="text" maxlength="11" placeholder="Ej. 12345678901">
 </div>
-            <div class="field"><label for="comprobanteDomicilio">Comprobante de domicilio</label><input id="comprobanteDomicilio" type="file" accept=".pdf,.jpg,.jpeg,.png" required></div>
+            <div class="field"><label for="comprobanteDomicilio">Comprobante de domicilio</label><input id="comprobanteDomicilio" type="file" accept=".pdf,.jpg,.jpeg,.png"></div>
           </div>
-          <p class="form-note">Versión escolar: la página verifica que se adjunten siete documentos y que el RFC sea capturado correctamente. Los archivos no se almacenan en GitHub; únicamente se registran sus nombres en este navegador.</p>
+          <p class="form-note">Versión escolar: la solicitud puede enviarse aunque falten documentos, RFC o NSS; la matriz de preselección mostrará qué requisitos no se cumplen. Los archivos no se almacenan en GitHub; únicamente se registran sus nombres en este navegador.</p>
           <button type="submit" class="btn btn-primary" style="margin-top:20px;">Enviar postulación</button>
           <div class="success" id="successMessage"></div>
           <div class="verification-panel" id="verificationPanel">
@@ -1300,7 +1352,30 @@
               </a>
             </div>
 
-            <div class="code-check" id="codeCheck">
+            
+            <div class="preselection-panel" id="preselectionPanel">
+              <h3 style="color:var(--cafe);">Matriz de preselección</h3>
+              <p style="margin-bottom:14px;">
+                La página compara los requisitos del puesto con los datos y documentos del candidato.
+                Solo quienes cumplen los requisitos obligatorios pueden recibir el código de verificación.
+              </p>
+              <div style="overflow-x:auto;">
+                <table class="preselection-table">
+                  <thead>
+                    <tr>
+                      <th>Criterio</th>
+                      <th>Requisito</th>
+                      <th>Dato del candidato</th>
+                      <th>Resultado</th>
+                    </tr>
+                  </thead>
+                  <tbody id="preselectionBody"></tbody>
+                </table>
+              </div>
+              <div id="preselectionVerdict" style="margin-top:18px;font-weight:900;"></div>
+            </div>
+
+<div class="code-check" id="codeCheck">
               <h3 style="color:var(--cafe);">Ingresa el código de verificación</h3>
               <p>Escribe el código de 6 dígitos que fue enviado al número de WhatsApp registrado.</p>
               <div class="form-grid" style="margin-top:14px;">
@@ -1320,7 +1395,41 @@
     </section>
 
     
-    <section class="section locked-section" id="seleccion">
+    
+<section class="section" id="matriz-preseleccion" style="background:#fffaf0;">
+  <div class="container">
+    <div class="section-title">
+      <span>Filtro inicial</span>
+      <h2>Matriz general de preselección</h2>
+      <p>Incluye a todos los candidatos: preseleccionados y no preseleccionados.</p>
+    </div>
+    <div class="form-card">
+      <div style="overflow-x:auto;">
+        <table style="width:100%;border-collapse:collapse;min-width:1200px;">
+          <thead>
+            <tr style="background:var(--turquesa);color:white;">
+              <th style="padding:13px;text-align:left;">Candidato</th>
+              <th style="padding:13px;text-align:left;">Edad</th>
+              <th style="padding:13px;text-align:left;">Escolaridad</th>
+              <th style="padding:13px;text-align:left;">Experiencia</th>
+              <th style="padding:13px;text-align:left;">Caja</th>
+              <th style="padding:13px;text-align:left;">Disponibilidad</th>
+              <th style="padding:13px;text-align:left;">Documentación</th>
+              <th style="padding:13px;text-align:left;">Requisitos incumplidos</th>
+              <th style="padding:13px;text-align:left;">Cumplimiento</th>
+              <th style="padding:13px;text-align:left;">Resultado</th>
+            </tr>
+          </thead>
+          <tbody id="preselectionGeneralBody"></tbody>
+        </table>
+      </div>
+      <div id="preselectionGeneralEmpty" style="text-align:center;padding:28px;color:#68767b;">
+        Todavía no hay solicitudes registradas.
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section locked-section" id="seleccion">
       <div class="container">
         <div class="section-title">
           <span>Evaluación del candidato</span>
@@ -1413,28 +1522,59 @@
 
         <form class="evaluation-form" id="psychForm">
           <h3>2. Prueba psicológica laboral</h3>
-          <p>Selecciona la respuesta que mejor describa al candidato. Escala: Siempre 4, Casi siempre 3, Algunas veces 2 y Nunca 1.</p>
+          <p>
+            Evaluación escolar basada en el perfil de Auxiliar de Caja y Atención al Cliente:
+            honestidad, responsabilidad, comunicación, servicio, organización, trabajo en equipo y tolerancia a la presión.
+          </p>
 
           <div class="field" style="margin-top:18px;max-width:430px;">
             <label for="psychCandidate">Candidato</label>
             <select id="psychCandidate" required><option value="">Selecciona un candidato</option></select>
           </div>
 
-          <div class="psych-grid" id="psychQuestions">
-            <div class="psych-item"><strong>1. Me gusta trabajar en equipo.</strong><div class="psych-options"><label><input type="radio" name="p1" value="4" required> Siempre</label><label><input type="radio" name="p1" value="3"> Casi siempre</label><label><input type="radio" name="p1" value="2"> Algunas veces</label><label><input type="radio" name="p1" value="1"> Nunca</label></div></div>
-            <div class="psych-item"><strong>2. Mantengo la calma cuando tengo mucha carga de trabajo.</strong><div class="psych-options"><label><input type="radio" name="p2" value="4" required> Siempre</label><label><input type="radio" name="p2" value="3"> Casi siempre</label><label><input type="radio" name="p2" value="2"> Algunas veces</label><label><input type="radio" name="p2" value="1"> Nunca</label></div></div>
-            <div class="psych-item"><strong>3. Me considero una persona organizada.</strong><div class="psych-options"><label><input type="radio" name="p3" value="4" required> Siempre</label><label><input type="radio" name="p3" value="3"> Casi siempre</label><label><input type="radio" name="p3" value="2"> Algunas veces</label><label><input type="radio" name="p3" value="1"> Nunca</label></div></div>
-            <div class="psych-item"><strong>4. Cumplo mis responsabilidades sin necesidad de supervisión.</strong><div class="psych-options"><label><input type="radio" name="p4" value="4" required> Siempre</label><label><input type="radio" name="p4" value="3"> Casi siempre</label><label><input type="radio" name="p4" value="2"> Algunas veces</label><label><input type="radio" name="p4" value="1"> Nunca</label></div></div>
-            <div class="psych-item"><strong>5. Me adapto fácilmente a los cambios.</strong><div class="psych-options"><label><input type="radio" name="p5" value="4" required> Siempre</label><label><input type="radio" name="p5" value="3"> Casi siempre</label><label><input type="radio" name="p5" value="2"> Algunas veces</label><label><input type="radio" name="p5" value="1"> Nunca</label></div></div>
-            <div class="psych-item"><strong>6. Trato a los clientes con respeto incluso cuando están molestos.</strong><div class="psych-options"><label><input type="radio" name="p6" value="4" required> Siempre</label><label><input type="radio" name="p6" value="3"> Casi siempre</label><label><input type="radio" name="p6" value="2"> Algunas veces</label><label><input type="radio" name="p6" value="1"> Nunca</label></div></div>
-            <div class="psych-item"><strong>7. Reconozco mis errores y busco corregirlos.</strong><div class="psych-options"><label><input type="radio" name="p7" value="4" required> Siempre</label><label><input type="radio" name="p7" value="3"> Casi siempre</label><label><input type="radio" name="p7" value="2"> Algunas veces</label><label><input type="radio" name="p7" value="1"> Nunca</label></div></div>
-            <div class="psych-item"><strong>8. Puedo tomar decisiones rápidas sin perder el control.</strong><div class="psych-options"><label><input type="radio" name="p8" value="4" required> Siempre</label><label><input type="radio" name="p8" value="3"> Casi siempre</label><label><input type="radio" name="p8" value="2"> Algunas veces</label><label><input type="radio" name="p8" value="1"> Nunca</label></div></div>
-            <div class="psych-item"><strong>9. Cuido el dinero, materiales e insumos que están bajo mi responsabilidad.</strong><div class="psych-options"><label><input type="radio" name="p9" value="4" required> Siempre</label><label><input type="radio" name="p9" value="3"> Casi siempre</label><label><input type="radio" name="p9" value="2"> Algunas veces</label><label><input type="radio" name="p9" value="1"> Nunca</label></div></div>
-            <div class="psych-item"><strong>10. Mantengo una actitud de servicio durante toda la jornada.</strong><div class="psych-options"><label><input type="radio" name="p10" value="4" required> Siempre</label><label><input type="radio" name="p10" value="3"> Casi siempre</label><label><input type="radio" name="p10" value="2"> Algunas veces</label><label><input type="radio" name="p10" value="1"> Nunca</label></div></div>
+          <div class="psych-scale">
+            <strong>Escala:</strong> Siempre = 4 · Casi siempre = 3 · Algunas veces = 2 · Nunca = 1
+          </div>
+
+          <div class="psych-dimension">
+            <div class="psych-dimension-header"><strong>Dimensión 1 — Honestidad y responsabilidad</strong></div>
+            <div class="psych-dimension-body">
+              <div class="psych-item"><strong>1. Informo de inmediato cuando detecto un error en caja o inventario.</strong><div class="psych-options"><label><input type="radio" name="p1" value="4" required> Siempre</label><label><input type="radio" name="p1" value="3"> Casi siempre</label><label><input type="radio" name="p1" value="2"> Algunas veces</label><label><input type="radio" name="p1" value="1"> Nunca</label></div></div>
+              <div class="psych-item"><strong>2. Cumplo mis responsabilidades sin necesidad de supervisión constante.</strong><div class="psych-options"><label><input type="radio" name="p2" value="4" required> Siempre</label><label><input type="radio" name="p2" value="3"> Casi siempre</label><label><input type="radio" name="p2" value="2"> Algunas veces</label><label><input type="radio" name="p2" value="1"> Nunca</label></div></div>
+              <div class="psych-item"><strong>3. Cuido el dinero, tickets y materiales que están bajo mi responsabilidad.</strong><div class="psych-options"><label><input type="radio" name="p3" value="4" required> Siempre</label><label><input type="radio" name="p3" value="3"> Casi siempre</label><label><input type="radio" name="p3" value="2"> Algunas veces</label><label><input type="radio" name="p3" value="1"> Nunca</label></div></div>
+            </div>
+          </div>
+
+          <div class="psych-dimension">
+            <div class="psych-dimension-header"><strong>Dimensión 2 — Atención al cliente y comunicación</strong></div>
+            <div class="psych-dimension-body">
+              <div class="psych-item"><strong>4. Mantengo un trato amable aunque el cliente esté molesto.</strong><div class="psych-options"><label><input type="radio" name="p4" value="4" required> Siempre</label><label><input type="radio" name="p4" value="3"> Casi siempre</label><label><input type="radio" name="p4" value="2"> Algunas veces</label><label><input type="radio" name="p4" value="1"> Nunca</label></div></div>
+              <div class="psych-item"><strong>5. Escucho con atención antes de responder una duda o queja.</strong><div class="psych-options"><label><input type="radio" name="p5" value="4" required> Siempre</label><label><input type="radio" name="p5" value="3"> Casi siempre</label><label><input type="radio" name="p5" value="2"> Algunas veces</label><label><input type="radio" name="p5" value="1"> Nunca</label></div></div>
+              <div class="psych-item"><strong>6. Explico la información con claridad y respeto.</strong><div class="psych-options"><label><input type="radio" name="p6" value="4" required> Siempre</label><label><input type="radio" name="p6" value="3"> Casi siempre</label><label><input type="radio" name="p6" value="2"> Algunas veces</label><label><input type="radio" name="p6" value="1"> Nunca</label></div></div>
+            </div>
+          </div>
+
+          <div class="psych-dimension">
+            <div class="psych-dimension-header"><strong>Dimensión 3 — Organización y manejo de caja</strong></div>
+            <div class="psych-dimension-body">
+              <div class="psych-item"><strong>7. Reviso cuidadosamente cantidades, pagos y cambio antes de cerrar una venta.</strong><div class="psych-options"><label><input type="radio" name="p7" value="4" required> Siempre</label><label><input type="radio" name="p7" value="3"> Casi siempre</label><label><input type="radio" name="p7" value="2"> Algunas veces</label><label><input type="radio" name="p7" value="1"> Nunca</label></div></div>
+              <div class="psych-item"><strong>8. Mantengo ordenados los tickets, registros y el área de caja.</strong><div class="psych-options"><label><input type="radio" name="p8" value="4" required> Siempre</label><label><input type="radio" name="p8" value="3"> Casi siempre</label><label><input type="radio" name="p8" value="2"> Algunas veces</label><label><input type="radio" name="p8" value="1"> Nunca</label></div></div>
+              <div class="psych-item"><strong>9. Sigo los procedimientos incluso cuando hay mucha demanda.</strong><div class="psych-options"><label><input type="radio" name="p9" value="4" required> Siempre</label><label><input type="radio" name="p9" value="3"> Casi siempre</label><label><input type="radio" name="p9" value="2"> Algunas veces</label><label><input type="radio" name="p9" value="1"> Nunca</label></div></div>
+            </div>
+          </div>
+
+          <div class="psych-dimension">
+            <div class="psych-dimension-header"><strong>Dimensión 4 — Trabajo en equipo y presión</strong></div>
+            <div class="psych-dimension-body">
+              <div class="psych-item"><strong>10. Apoyo a mis compañeros cuando aumenta la carga de trabajo.</strong><div class="psych-options"><label><input type="radio" name="p10" value="4" required> Siempre</label><label><input type="radio" name="p10" value="3"> Casi siempre</label><label><input type="radio" name="p10" value="2"> Algunas veces</label><label><input type="radio" name="p10" value="1"> Nunca</label></div></div>
+              <div class="psych-item"><strong>11. Mantengo la calma durante horas pico o ante varios pedidos.</strong><div class="psych-options"><label><input type="radio" name="p11" value="4" required> Siempre</label><label><input type="radio" name="p11" value="3"> Casi siempre</label><label><input type="radio" name="p11" value="2"> Algunas veces</label><label><input type="radio" name="p11" value="1"> Nunca</label></div></div>
+              <div class="psych-item"><strong>12. Me adapto a cambios de tareas, horarios o prioridades.</strong><div class="psych-options"><label><input type="radio" name="p12" value="4" required> Siempre</label><label><input type="radio" name="p12" value="3"> Casi siempre</label><label><input type="radio" name="p12" value="2"> Algunas veces</label><label><input type="radio" name="p12" value="1"> Nunca</label></div></div>
+            </div>
           </div>
 
           <button type="submit" class="btn btn-primary" style="margin-top:20px;">Guardar prueba psicológica</button>
           <div class="result-box" id="psychResult"></div>
+          <div class="dimension-results" id="psychDimensionResults" style="display:none;"></div>
         </form>
       </div>
     </section>
@@ -1547,6 +1687,9 @@
     const codeInput=document.getElementById("codeInput");
     const verifyCodeBtn=document.getElementById("verifyCodeBtn");
     const codeStatus=document.getElementById("codeStatus");
+    const preselectionPanel=document.getElementById("preselectionPanel");
+    const preselectionBody=document.getElementById("preselectionBody");
+    const preselectionVerdict=document.getElementById("preselectionVerdict");
     const selectionSection=document.getElementById("seleccion");
     const matrixSection=document.getElementById("preseleccionados");
     const starForm=document.getElementById("starForm");
@@ -1554,7 +1697,7 @@
     const starCandidate=document.getElementById("starCandidate");
     const psychCandidate=document.getElementById("psychCandidate");
     const starResult=document.getElementById("starResult");
-    const psychResult=document.getElementById("psychResult");
+    const psychResult=document.getElementById("psychResult");const preselectionGeneralBody=document.getElementById("preselectionGeneralBody");const preselectionGeneralEmpty=document.getElementById("preselectionGeneralEmpty");
     let currentVerificationCode="";
 
     menuBtn.addEventListener("click",()=>menu.classList.toggle("open"));
@@ -1605,6 +1748,49 @@
       return `<span style="${styles[type]};padding:8px 11px;border-radius:999px;font-weight:800;white-space:nowrap">${text}</span>`;
     }
 
+
+    function renderGeneralPreselection(){
+      const candidates=getCandidates();
+      preselectionGeneralBody.innerHTML="";
+      preselectionGeneralEmpty.style.display=candidates.length?"none":"block";
+
+      candidates.forEach(candidate=>{
+        const docs=candidate.documentos||{};
+        const checks=[
+          ["Edad mínima",Number(candidate.edad)>=18],
+          ["Escolaridad mínima",["Bachillerato concluido","Licenciatura en curso","Licenciatura concluida"].includes(candidate.escolaridad)],
+          ["Disponibilidad de horario",candidate.disponibilidad==="Sí"],
+          ["Solicitud de empleo",Boolean(docs.solicitudEmpleo)],
+          ["Currículum vitae",Boolean(docs.cv)],
+          ["Identificación oficial",Boolean(docs.identificacion)],
+          ["CURP",Boolean(docs.curp)],
+          ["RFC",Boolean(candidate.rfc)&&/^[A-ZÑ&]{3,4}\d{6}[A-Z0-9]{3}$/.test(candidate.rfc)],
+          ["Constancia fiscal",Boolean(docs.constanciaFiscal)],
+          ["NSS",Boolean(candidate.nss)&&String(candidate.nss).replace(/\D/g,"").length===11],
+          ["Comprobante de domicilio",Boolean(docs.comprobanteDomicilio)],
+          ["Experiencia o caja",Number(candidate.mesesExperiencia)>=1||candidate.manejoCaja==="Sí"]
+        ];
+        const failed=checks.filter(x=>!x[1]).map(x=>x[0]);
+        const percentage=Math.round(checks.filter(x=>x[1]).length/checks.length*100);
+        const preselected=failed.length===0;
+        const uploaded=[docs.solicitudEmpleo,docs.cv,docs.identificacion,docs.curp,docs.constanciaFiscal,docs.comprobanteDomicilio].filter(Boolean).length;
+        const row=document.createElement("tr");
+        row.style.borderBottom="1px solid #dfe8e9";
+        row.innerHTML=`
+          <td style="padding:13px"><strong>${candidate.nombre||"Sin nombre"}</strong></td>
+          <td style="padding:13px">${candidate.edad??"—"}</td>
+          <td style="padding:13px">${candidate.escolaridad||"No capturada"}</td>
+          <td style="padding:13px">${candidate.mesesExperiencia||0} meses</td>
+          <td style="padding:13px">${candidate.manejoCaja||"No"}</td>
+          <td style="padding:13px">${candidate.disponibilidad||"No"}</td>
+          <td style="padding:13px">${uploaded}/6 archivos · RFC ${candidate.rfc?"Sí":"No"} · NSS ${candidate.nss?"Sí":"No"}</td>
+          <td style="padding:13px">${failed.length?failed.join(", "):"Ninguno"}</td>
+          <td style="padding:13px"><strong>${percentage}%</strong></td>
+          <td style="padding:13px">${preselected?'<span style="background:#e7f8ee;color:#17663a;padding:8px 11px;border-radius:999px;font-weight:800">Preseleccionado</span>':'<span style="background:#fdeaea;color:#8a2424;padding:8px 11px;border-radius:999px;font-weight:800">No preseleccionado</span>'}</td>`;
+        preselectionGeneralBody.appendChild(row);
+      });
+    }
+
     function render(){
       const candidates=getCandidates();
       candidateBody.innerHTML="";
@@ -1633,6 +1819,7 @@
       });
 
       populateCandidateSelectors();
+      renderGeneralPreselection();
     }
 
     form.addEventListener("submit",event=>{
@@ -1640,6 +1827,9 @@
       verificationPanel.className="verification-panel";
       whatsappBtn.style.display="none";
       codeCheck.classList.remove("show");
+      preselectionPanel.classList.remove("show");
+      preselectionBody.innerHTML="";
+      preselectionVerdict.textContent="";
       codeInput.value="";
       codeStatus.textContent="";
       selectionSection.classList.add("locked-section");
@@ -1650,7 +1840,7 @@
         form.reportValidity();
         verificationPanel.classList.add("error");
         verificationTitle.textContent="Documentación incompleta";
-        verificationText.textContent="Completa todos los campos, captura tu RFC y NSS, y adjunta los seis documentos requeridos.";
+        verificationText.textContent="Completa los datos generales. Puedes enviar la solicitud aunque falte documentación; la matriz indicará qué requisitos no se cumplen.";
         return;
       }
 
@@ -1682,26 +1872,49 @@
       if(telefonoLimpio.length!==10) errores.push("El número de WhatsApp debe tener 10 dígitos");
 
       const rfcLimpio=rfc.value.trim().toUpperCase();
-      if(!/^[A-ZÑ&]{3,4}\d{6}[A-Z0-9]{3}$/.test(rfcLimpio)) errores.push("El RFC debe tener un formato válido de 12 o 13 caracteres");
+      if(rfcLimpio && !/^[A-ZÑ&]{3,4}\d{6}[A-Z0-9]{3}$/.test(rfcLimpio)) errores.push("El RFC debe tener un formato válido de 12 o 13 caracteres");
 
       const nssLimpio=nss.value.replace(/\D/g,"");
-      if(nssLimpio.length!==11) errores.push("El NSS debe contener 11 dígitos");
+      if(nssLimpio && nssLimpio.length!==11) errores.push("El NSS debe contener 11 dígitos");
 
-      if(faltantes.length||errores.length){
+      if(errores.length){
         verificationPanel.classList.add("error");
-        verificationTitle.textContent="La documentación no está completa";
-        let message="";
-        if(faltantes.length) message+="<strong>Faltan estos documentos:</strong><br>"+faltantes.map(x=>"• "+x).join("<br>");
-        if(errores.length){
-          if(message) message+="<br><br>";
-          message+="<strong>Revisa lo siguiente:</strong><br>"+errores.map(x=>"• "+x).join("<br>");
-        }
-        verificationText.innerHTML=message;
+        verificationTitle.textContent="Hay datos con formato incorrecto";
+        verificationText.innerHTML="<strong>Revisa lo siguiente:</strong><br>"+errores.map(x=>"• "+x).join("<br>");
         return;
       }
 
-      const code=String(Math.floor(100000+Math.random()*900000));
-      const whatsappMessage=encodeURIComponent(`Hola ${nombre.value.trim()}. Recibimos correctamente tu documentación para la vacante de ${vacante.value} en Capioca. Tu código de verificación es: ${code}. Conserva este código para continuar con entrevista STAR y prueba psicológica.`);
+      const criterios=[
+        {criterio:"Edad",requisito:"18 años o más",dato:`${edad.value} años`,cumple:Number(edad.value)>=18,obligatorio:true},
+        {criterio:"Escolaridad",requisito:"Bachillerato concluido o superior",dato:escolaridad.value,cumple:["Bachillerato concluido","Licenciatura en curso","Licenciatura concluida"].includes(escolaridad.value),obligatorio:true},
+        {criterio:"Disponibilidad",requisito:"Disponibilidad de horario",dato:disponibilidad.value,cumple:disponibilidad.value==="Sí",obligatorio:true},
+        {criterio:"Solicitud de empleo",requisito:"Documento obligatorio",dato:nombresArchivos.solicitudEmpleo||"No adjuntado",cumple:Boolean(nombresArchivos.solicitudEmpleo),obligatorio:true},
+        {criterio:"Currículum vitae",requisito:"Documento obligatorio",dato:nombresArchivos.cv||"No adjuntado",cumple:Boolean(nombresArchivos.cv),obligatorio:true},
+        {criterio:"Identificación oficial",requisito:"Documento obligatorio",dato:nombresArchivos.identificacion||"No adjuntado",cumple:Boolean(nombresArchivos.identificacion),obligatorio:true},
+        {criterio:"CURP",requisito:"Documento obligatorio",dato:nombresArchivos.curp||"No adjuntado",cumple:Boolean(nombresArchivos.curp),obligatorio:true},
+        {criterio:"RFC",requisito:"RFC capturado con formato válido",dato:rfcLimpio||"No capturado",cumple:Boolean(rfcLimpio)&&/^[A-ZÑ&]{3,4}\d{6}[A-Z0-9]{3}$/.test(rfcLimpio),obligatorio:true},
+        {criterio:"Constancia fiscal",requisito:"Documento obligatorio",dato:nombresArchivos.constanciaFiscal||"No adjuntado",cumple:Boolean(nombresArchivos.constanciaFiscal),obligatorio:true},
+        {criterio:"NSS",requisito:"NSS capturado con 11 dígitos",dato:nssLimpio||"No capturado",cumple:nssLimpio.length===11,obligatorio:true},
+        {criterio:"Comprobante de domicilio",requisito:"Documento obligatorio",dato:nombresArchivos.comprobanteDomicilio||"No adjuntado",cumple:Boolean(nombresArchivos.comprobanteDomicilio),obligatorio:true},
+        {criterio:"Experiencia",requisito:"Deseable en atención al cliente o caja",dato:`${mesesExperiencia.value} meses`,cumple:Number(mesesExperiencia.value)>=1,obligatorio:false},
+        {criterio:"Manejo de caja",requisito:"Deseable",dato:manejoCaja.value,cumple:manejoCaja.value==="Sí",obligatorio:false}
+      ];
+
+      preselectionBody.innerHTML="";
+      criterios.forEach(item=>{
+        const row=document.createElement("tr");
+        row.innerHTML=`
+          <td>${item.criterio}</td>
+          <td>${item.requisito}</td>
+          <td>${item.dato}</td>
+          <td>${item.cumple?'<span class="status-ok">Cumple</span>':'<span class="status-no">No cumple</span>'}</td>`;
+        preselectionBody.appendChild(row);
+      });
+      preselectionPanel.classList.add("show");
+
+      const cumpleObligatorios=criterios.filter(x=>x.obligatorio).every(x=>x.cumple);
+      const cumpleDeseable=criterios.filter(x=>!x.obligatorio).some(x=>x.cumple);
+      const preseleccionado=cumpleObligatorios && cumpleDeseable;
 
       const candidate={
         nombre:nombre.value.trim(),
@@ -1719,8 +1932,9 @@
         rfc:rfcLimpio,
         nss:nssLimpio,
         documentos:nombresArchivos,
-        codigoVerificacion:code,
-        documentacion:"Completa"
+        documentacion:"Completa",
+        preseleccionado,
+        criteriosPreseleccion:criterios
       };
       candidate.profileScore=profileScore(candidate);
 
@@ -1729,16 +1943,34 @@
       saveCandidates(candidates);
       render();
 
-      successMessage.textContent="Postulación registrada. La documentación requerida está completa.";
+      if(!preseleccionado){
+        verificationPanel.classList.add("error");
+        verificationTitle.textContent="Candidato no preseleccionado";
+        verificationText.textContent="El candidato no cumple todos los requisitos obligatorios o no cumple ninguno de los requisitos deseables de experiencia y manejo de caja.";
+        preselectionVerdict.innerHTML='<span class="status-no">No preseleccionado — solicitud recibida, pero no se enviará código de verificación</span>';
+        whatsappBtn.style.display="none";
+        codeCheck.classList.remove("show");
+        setTimeout(()=>preselectionPanel.scrollIntoView({behavior:"smooth",block:"center"}),300);
+        return;
+      }
+
+      const code=String(Math.floor(100000+Math.random()*900000));
+      const whatsappMessage=encodeURIComponent(`Hola ${nombre.value.trim()}. Has sido preseleccionado para la vacante de ${vacante.value} en Capioca. Tu código de verificación es: ${code}. Ingresa este código en la página para continuar con la entrevista STAR y la prueba psicológica.`);
+
+      candidates[candidates.length-1].codigoVerificacion=code;
+      saveCandidates(candidates);
+
+      successMessage.textContent="Postulación registrada. El candidato cumple la matriz de preselección.";
       successMessage.style.display="block";
       verificationPanel.classList.add("ok");
-      verificationTitle.textContent="Documentación completa";
-      verificationText.textContent="La documentación fue validada. Envía el código por WhatsApp y después ingrésalo en esta página para desbloquear el proceso de selección.";
+      verificationTitle.textContent="Candidato preseleccionado";
+      verificationText.textContent="Cumple los requisitos obligatorios y al menos uno de los requisitos deseables. Ahora puede recibir el código por WhatsApp.";
+      preselectionVerdict.innerHTML='<span class="status-ok">Preseleccionado — puede recibir código de verificación</span>';
       currentVerificationCode=code;
       whatsappBtn.href=`https://wa.me/52${telefonoLimpio}?text=${whatsappMessage}`;
       whatsappBtn.style.display="inline-flex";
       codeCheck.classList.add("show");
-      setTimeout(()=>verificationPanel.scrollIntoView({behavior:"smooth",block:"center"}),300);
+      setTimeout(()=>preselectionPanel.scrollIntoView({behavior:"smooth",block:"center"}),300);
     });
 
 
@@ -1802,19 +2034,35 @@
       if(!candidates[index]) return;
 
       const answers=[];
-      for(let i=1;i<=10;i++){
+      for(let i=1;i<=12;i++){
         answers.push(Number(document.querySelector(`input[name="p${i}"]:checked`).value));
       }
       const total=answers.reduce((sum,value)=>sum+value,0);
-      const score=Math.round(total/40*100);
+      const score=Math.round(total/48*100);
+
+      const dimensiones=[
+        Math.round(answers.slice(0,3).reduce((a,b)=>a+b,0)/12*100),
+        Math.round(answers.slice(3,6).reduce((a,b)=>a+b,0)/12*100),
+        Math.round(answers.slice(6,9).reduce((a,b)=>a+b,0)/12*100),
+        Math.round(answers.slice(9,12).reduce((a,b)=>a+b,0)/12*100)
+      ];
 
       candidates[index].psychScore=score;
       candidates[index].psychAnswers=answers;
+      candidates[index].psychDimensions=dimensiones;
       saveCandidates(candidates);
       render();
 
       psychResult.style.display="block";
-      psychResult.textContent=`Prueba psicológica guardada. Resultado: ${score}%. ${score>=70?"Perfil favorable.":"Perfil no favorable."}`;
+      psychResult.textContent=`Prueba psicológica guardada. Resultado general: ${score}%. ${score>=70?"Perfil favorable para el puesto.":"Perfil no favorable para el puesto."}`;
+
+      const dimensionBox=document.getElementById("psychDimensionResults");
+      dimensionBox.style.display="grid";
+      dimensionBox.innerHTML=`
+        <div><strong>Honestidad y responsabilidad</strong><br>${dimensiones[0]}%</div>
+        <div><strong>Atención y comunicación</strong><br>${dimensiones[1]}%</div>
+        <div><strong>Organización y caja</strong><br>${dimensiones[2]}%</div>
+        <div><strong>Equipo y presión</strong><br>${dimensiones[3]}%</div>`;
     });
 
     clearBtn.addEventListener("click",()=>{
