@@ -1063,6 +1063,146 @@
       .dimension-results{grid-template-columns:1fr 1fr;}
     }
 
+
+    .moss-intro{
+      background:linear-gradient(135deg,#fffdf8,#f5fbfb);
+      border:1px solid #dce7e8;
+      border-radius:22px;
+      padding:24px;
+      margin-top:18px;
+    }
+    .moss-meta{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+      margin-top:18px;
+    }
+    .moss-meta div{
+      background:white;
+      border-radius:14px;
+      padding:14px;
+      text-align:center;
+      box-shadow:0 8px 18px rgba(8,102,111,.08);
+    }
+    .moss-section{
+      margin:24px 0;
+      border:1px solid #dce7e8;
+      border-radius:20px;
+      overflow:hidden;
+      background:white;
+    }
+    .moss-section-title{
+      background:linear-gradient(135deg,var(--turquesa),var(--turquesa-oscuro));
+      color:white;
+      padding:16px 20px;
+      font-weight:900;
+    }
+    .moss-question{
+      padding:18px 20px;
+      border-bottom:1px solid #edf2f3;
+    }
+    .moss-question:last-child{border-bottom:0;}
+    .moss-options{
+      display:grid;
+      gap:9px;
+      margin-top:12px;
+    }
+    .moss-options label{
+      display:flex;
+      align-items:flex-start;
+      gap:8px;
+      font-weight:normal;
+      color:var(--texto);
+      cursor:pointer;
+    }
+    .moss-analysis{
+      display:none;
+      margin-top:24px;
+      padding:24px;
+      border-radius:20px;
+      background:#f7fbfb;
+      border:1px solid #dce7e8;
+      text-align:center;
+    }
+    .analysis-bar{
+      height:18px;
+      background:#e3ecee;
+      border-radius:999px;
+      overflow:hidden;
+      margin:18px auto 8px;
+      max-width:620px;
+    }
+    .analysis-fill{
+      width:0%;
+      height:100%;
+      background:linear-gradient(90deg,var(--turquesa),var(--naranja));
+      transition:width .25s ease;
+    }
+    .moss-report{
+      display:none;
+      margin-top:28px;
+      padding:28px;
+      border-radius:24px;
+      background:white;
+      box-shadow:var(--sombra);
+      border:1px solid #dce7e8;
+    }
+    .score-circle{
+      width:150px;
+      height:150px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      margin:18px auto;
+      background:conic-gradient(var(--turquesa) 0deg,#e9eeee 0deg);
+      position:relative;
+    }
+    .score-circle::after{
+      content:"";
+      position:absolute;
+      width:112px;
+      height:112px;
+      border-radius:50%;
+      background:white;
+    }
+    .score-circle span{
+      position:relative;
+      z-index:2;
+      font-size:2rem;
+      font-weight:900;
+      color:var(--cafe);
+    }
+    .competency-report{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:18px;
+    }
+    .competency-report th{
+      background:var(--turquesa);
+      color:white;
+      padding:12px;
+      text-align:left;
+    }
+    .competency-report td{
+      padding:12px;
+      border-bottom:1px solid #e7eeee;
+    }
+    .recommendation-box{
+      margin-top:20px;
+      padding:18px;
+      border-radius:16px;
+      background:var(--crema);
+    }
+    .eval-fields{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+      margin-top:18px;
+    }
+    @media(max-width:800px){
+      .moss-meta,.eval-fields{grid-template-columns:1fr;}
+    }
+
 </style>
 </head>
 
@@ -1520,62 +1660,83 @@
           <div class="result-box" id="starResult"></div>
         </form>
 
-        <form class="evaluation-form" id="psychForm">
-          <h3>2. Prueba psicológica laboral</h3>
-          <p>
-            Evaluación escolar basada en el perfil de Auxiliar de Caja y Atención al Cliente:
-            honestidad, responsabilidad, comunicación, servicio, organización, trabajo en equipo y tolerancia a la presión.
-          </p>
+        
+<form class="evaluation-form" id="psychForm">
+  <h3>2. Evaluación Psicológica de Competencias Laborales</h3>
+  <p><strong>Basada en el Test de Moss</strong> · Puesto: Auxiliar de Caja</p>
 
-          <div class="field" style="margin-top:18px;max-width:430px;">
-            <label for="psychCandidate">Candidato</label>
-            <select id="psychCandidate" required><option value="">Selecciona un candidato</option></select>
-          </div>
+  <div class="moss-intro">
+    <h3 style="margin-bottom:8px;">Bienvenido, candidato</h3>
+    <p>
+      Antes de continuar con el proceso de selección, deberás responder esta evaluación.
+      Su finalidad es conocer tu forma habitual de actuar en situaciones laborales y estimar
+      tu nivel de compatibilidad con el puesto de Auxiliar de Caja en Capioca Campeche.
+    </p>
+    <div class="moss-meta">
+      <div><strong>⏱ 15 minutos</strong><br>Tiempo estimado</div>
+      <div><strong>18 preguntas</strong><br>Número de reactivos</div>
+      <div><strong>Opción múltiple</strong><br>Modalidad</div>
+    </div>
+  </div>
 
-          <div class="psych-scale">
-            <strong>Escala:</strong> Siempre = 4 · Casi siempre = 3 · Algunas veces = 2 · Nunca = 1
-          </div>
+  <div class="field" style="margin-top:20px;max-width:430px;">
+    <label for="psychCandidate">Candidato</label>
+    <select id="psychCandidate" required><option value="">Selecciona un candidato</option></select>
+  </div>
 
-          <div class="psych-dimension">
-            <div class="psych-dimension-header"><strong>Dimensión 1 — Honestidad y responsabilidad</strong></div>
-            <div class="psych-dimension-body">
-              <div class="psych-item"><strong>1. Informo de inmediato cuando detecto un error en caja o inventario.</strong><div class="psych-options"><label><input type="radio" name="p1" value="4" required> Siempre</label><label><input type="radio" name="p1" value="3"> Casi siempre</label><label><input type="radio" name="p1" value="2"> Algunas veces</label><label><input type="radio" name="p1" value="1"> Nunca</label></div></div>
-              <div class="psych-item"><strong>2. Cumplo mis responsabilidades sin necesidad de supervisión constante.</strong><div class="psych-options"><label><input type="radio" name="p2" value="4" required> Siempre</label><label><input type="radio" name="p2" value="3"> Casi siempre</label><label><input type="radio" name="p2" value="2"> Algunas veces</label><label><input type="radio" name="p2" value="1"> Nunca</label></div></div>
-              <div class="psych-item"><strong>3. Cuido el dinero, tickets y materiales que están bajo mi responsabilidad.</strong><div class="psych-options"><label><input type="radio" name="p3" value="4" required> Siempre</label><label><input type="radio" name="p3" value="3"> Casi siempre</label><label><input type="radio" name="p3" value="2"> Algunas veces</label><label><input type="radio" name="p3" value="1"> Nunca</label></div></div>
-            </div>
-          </div>
+  <button type="button" class="btn btn-primary" id="startMossBtn" style="margin-top:18px;">Comenzar evaluación</button>
 
-          <div class="psych-dimension">
-            <div class="psych-dimension-header"><strong>Dimensión 2 — Atención al cliente y comunicación</strong></div>
-            <div class="psych-dimension-body">
-              <div class="psych-item"><strong>4. Mantengo un trato amable aunque el cliente esté molesto.</strong><div class="psych-options"><label><input type="radio" name="p4" value="4" required> Siempre</label><label><input type="radio" name="p4" value="3"> Casi siempre</label><label><input type="radio" name="p4" value="2"> Algunas veces</label><label><input type="radio" name="p4" value="1"> Nunca</label></div></div>
-              <div class="psych-item"><strong>5. Escucho con atención antes de responder una duda o queja.</strong><div class="psych-options"><label><input type="radio" name="p5" value="4" required> Siempre</label><label><input type="radio" name="p5" value="3"> Casi siempre</label><label><input type="radio" name="p5" value="2"> Algunas veces</label><label><input type="radio" name="p5" value="1"> Nunca</label></div></div>
-              <div class="psych-item"><strong>6. Explico la información con claridad y respeto.</strong><div class="psych-options"><label><input type="radio" name="p6" value="4" required> Siempre</label><label><input type="radio" name="p6" value="3"> Casi siempre</label><label><input type="radio" name="p6" value="2"> Algunas veces</label><label><input type="radio" name="p6" value="1"> Nunca</label></div></div>
-            </div>
-          </div>
+  <div id="mossQuestionsWrap" style="display:none;">
+<div class="moss-section"><div class="moss-section-title">SECCIÓN 1 · Juicio Laboral</div><div class="moss-question"><strong>Pregunta 1</strong><p style="margin-top:6px;">Si un cliente recibe una bebida equivocada y comienza a molestarse, ¿qué harías primero?</p><div class="moss-options"><label><input type="radio" name="p1" value="1" required> A) Explicar que fue un error del compañero.</label><label><input type="radio" name="p1" value="4"> B) Pedir disculpas y ofrecer una solución inmediata.</label><label><input type="radio" name="p1" value="3"> C) Esperar a que el supervisor intervenga.</label><label><input type="radio" name="p1" value="1"> D) Ignorar la situación porque no fue tu responsabilidad.</label></div></div><div class="moss-question"><strong>Pregunta 2</strong><p style="margin-top:6px;">Durante una hora con muchos pedidos observas que un compañero tiene dificultades.</p><div class="moss-options"><label><input type="radio" name="p2" value="2" required> A) Continúo con mis actividades.</label><label><input type="radio" name="p2" value="4"> B) Lo ayudo para agilizar el servicio.</label><label><input type="radio" name="p2" value="3"> C) Espero instrucciones.</label><label><input type="radio" name="p2" value="1"> D) Dejo que resuelva el problema.</label></div></div><div class="moss-question"><strong>Pregunta 3</strong><p style="margin-top:6px;">Se termina un ingrediente importante durante el turno.</p><div class="moss-options"><label><input type="radio" name="p3" value="4" required> A) Informo inmediatamente al encargado y propongo una alternativa.</label><label><input type="radio" name="p3" value="1"> B) Espero que alguien más lo note.</label><label><input type="radio" name="p3" value="2"> C) Continúo trabajando.</label><label><input type="radio" name="p3" value="2"> D) Aviso al finalizar el turno.</label></div></div></div><div class="moss-section"><div class="moss-section-title">SECCIÓN 2 · Relaciones Humanas</div><div class="moss-question"><strong>Pregunta 4</strong><p style="margin-top:6px;">Un compañero nuevo comete errores constantemente.</p><div class="moss-options"><label><input type="radio" name="p4" value="1" required> A) Lo ignoro.</label><label><input type="radio" name="p4" value="4"> B) Lo apoyo y le explico el procedimiento.</label><label><input type="radio" name="p4" value="1"> C) Me molesto.</label><label><input type="radio" name="p4" value="3"> D) Informo únicamente al supervisor.</label></div></div><div class="moss-question"><strong>Pregunta 5</strong><p style="margin-top:6px;">Un cliente realiza muchas preguntas antes de comprar.</p><div class="moss-options"><label><input type="radio" name="p5" value="4" required> A) Respondo todas con paciencia.</label><label><input type="radio" name="p5" value="3"> B) Contesto rápidamente.</label><label><input type="radio" name="p5" value="1"> C) Le digo que revise el menú.</label><label><input type="radio" name="p5" value="2"> D) Pido a otro compañero que lo atienda.</label></div></div><div class="moss-question"><strong>Pregunta 6</strong><p style="margin-top:6px;">Cuando trabajas en equipo normalmente…</p><div class="moss-options"><label><input type="radio" name="p6" value="4" required> A) Escucho las opiniones de todos.</label><label><input type="radio" name="p6" value="1"> B) Prefiero trabajar solo.</label><label><input type="radio" name="p6" value="3"> C) Espero instrucciones.</label><label><input type="radio" name="p6" value="2"> D) Hago únicamente mi parte.</label></div></div></div><div class="moss-section"><div class="moss-section-title">SECCIÓN 3 · Adaptación</div><div class="moss-question"><strong>Pregunta 7</strong><p style="margin-top:6px;">Cambian tu horario con poca anticipación.</p><div class="moss-options"><label><input type="radio" name="p7" value="4" required> A) Me adapto sin inconvenientes.</label><label><input type="radio" name="p7" value="3"> B) Expreso mi opinión y busco una solución.</label><label><input type="radio" name="p7" value="1"> C) Me molesto.</label><label><input type="radio" name="p7" value="1"> D) No acepto.</label></div></div><div class="moss-question"><strong>Pregunta 8</strong><p style="margin-top:6px;">Aprender un procedimiento nuevo para preparar bebidas…</p><div class="moss-options"><label><input type="radio" name="p8" value="4" required> A) Me motiva.</label><label><input type="radio" name="p8" value="2"> B) Lo hago únicamente si me obligan.</label><label><input type="radio" name="p8" value="1"> C) Prefiero seguir igual.</label><label><input type="radio" name="p8" value="2"> D) Me cuesta adaptarme.</label></div></div><div class="moss-question"><strong>Pregunta 9</strong><p style="margin-top:6px;">Cuando hay cambios en el trabajo…</p><div class="moss-options"><label><input type="radio" name="p9" value="4" required> A) Busco aprender.</label><label><input type="radio" name="p9" value="3"> B) Espero que otros me enseñen.</label><label><input type="radio" name="p9" value="2"> C) Me incomodan.</label><label><input type="radio" name="p9" value="1"> D) Evito participar.</label></div></div></div><div class="moss-section"><div class="moss-section-title">SECCIÓN 4 · Liderazgo</div><div class="moss-question"><strong>Pregunta 10</strong><p style="margin-top:6px;">Si el encargado sale unos minutos…</p><div class="moss-options"><label><input type="radio" name="p10" value="4" required> A) Organizo al equipo.</label><label><input type="radio" name="p10" value="3"> B) Continúo trabajando.</label><label><input type="radio" name="p10" value="2"> C) Espero que regrese.</label><label><input type="radio" name="p10" value="1"> D) No hago nada.</label></div></div><div class="moss-question"><strong>Pregunta 11</strong><p style="margin-top:6px;">Si observas un problema…</p><div class="moss-options"><label><input type="radio" name="p11" value="4" required> A) Propongo soluciones.</label><label><input type="radio" name="p11" value="3"> B) Espero instrucciones.</label><label><input type="radio" name="p11" value="1"> C) Lo ignoro.</label><label><input type="radio" name="p11" value="2"> D) Lo dejo para después.</label></div></div><div class="moss-question"><strong>Pregunta 12</strong><p style="margin-top:6px;">Cuando alguien necesita ayuda…</p><div class="moss-options"><label><input type="radio" name="p12" value="4" required> A) Me ofrezco voluntariamente.</label><label><input type="radio" name="p12" value="3"> B) Solo si me lo piden.</label><label><input type="radio" name="p12" value="1"> C) Prefiero no intervenir.</label><label><input type="radio" name="p12" value="2"> D) Espero al supervisor.</label></div></div></div><div class="moss-section"><div class="moss-section-title">SECCIÓN 5 · Honestidad</div><div class="moss-question"><strong>Pregunta 13</strong><p style="margin-top:6px;">Encuentras dinero que un cliente olvidó.</p><div class="moss-options"><label><input type="radio" name="p13" value="4" required> A) Lo entrego inmediatamente.</label><label><input type="radio" name="p13" value="3"> B) Pregunto a mis compañeros.</label><label><input type="radio" name="p13" value="2"> C) Espero un momento.</label><label><input type="radio" name="p13" value="1"> D) Lo guardo.</label></div></div><div class="moss-question"><strong>Pregunta 14</strong><p style="margin-top:6px;">Cometes un error al cobrar.</p><div class="moss-options"><label><input type="radio" name="p14" value="4" required> A) Lo informo inmediatamente.</label><label><input type="radio" name="p14" value="3"> B) Intento solucionarlo.</label><label><input type="radio" name="p14" value="1"> C) Espero que nadie lo note.</label><label><input type="radio" name="p14" value="1"> D) No digo nada.</label></div></div><div class="moss-question"><strong>Pregunta 15</strong><p style="margin-top:6px;">Si un compañero rompe una regla…</p><div class="moss-options"><label><input type="radio" name="p15" value="4" required> A) Lo invito a corregirla.</label><label><input type="radio" name="p15" value="1"> B) Lo ignoro.</label><label><input type="radio" name="p15" value="3"> C) Lo reporto directamente.</label><label><input type="radio" name="p15" value="1"> D) Hago lo mismo.</label></div></div></div><div class="moss-section"><div class="moss-section-title">SECCIÓN 6 · Organización</div><div class="moss-question"><strong>Pregunta 16</strong><p style="margin-top:6px;">Antes de comenzar tu turno…</p><div class="moss-options"><label><input type="radio" name="p16" value="4" required> A) Organizo materiales.</label><label><input type="radio" name="p16" value="3"> B) Espero instrucciones.</label><label><input type="radio" name="p16" value="2"> C) Comienzo directamente.</label><label><input type="radio" name="p16" value="1"> D) Improviso.</label></div></div><div class="moss-question"><strong>Pregunta 17</strong><p style="margin-top:6px;">Cuando tienes varias tareas…</p><div class="moss-options"><label><input type="radio" name="p17" value="4" required> A) Las priorizo.</label><label><input type="radio" name="p17" value="2"> B) Hago la más fácil.</label><label><input type="radio" name="p17" value="3"> C) Espero ayuda.</label><label><input type="radio" name="p17" value="1"> D) Me estreso.</label></div></div><div class="moss-question"><strong>Pregunta 18</strong><p style="margin-top:6px;">Si termina tu turno…</p><div class="moss-options"><label><input type="radio" name="p18" value="4" required> A) Dejo limpia mi área.</label><label><input type="radio" name="p18" value="3"> B) Solo recojo algunas cosas.</label><label><input type="radio" name="p18" value="1"> C) Me retiro inmediatamente.</label><label><input type="radio" name="p18" value="1"> D) Espero que otro limpie.</label></div></div></div>
+    <button type="submit" class="btn btn-primary" style="margin-top:20px;">Finalizar evaluación</button>
+  </div>
 
-          <div class="psych-dimension">
-            <div class="psych-dimension-header"><strong>Dimensión 3 — Organización y manejo de caja</strong></div>
-            <div class="psych-dimension-body">
-              <div class="psych-item"><strong>7. Reviso cuidadosamente cantidades, pagos y cambio antes de cerrar una venta.</strong><div class="psych-options"><label><input type="radio" name="p7" value="4" required> Siempre</label><label><input type="radio" name="p7" value="3"> Casi siempre</label><label><input type="radio" name="p7" value="2"> Algunas veces</label><label><input type="radio" name="p7" value="1"> Nunca</label></div></div>
-              <div class="psych-item"><strong>8. Mantengo ordenados los tickets, registros y el área de caja.</strong><div class="psych-options"><label><input type="radio" name="p8" value="4" required> Siempre</label><label><input type="radio" name="p8" value="3"> Casi siempre</label><label><input type="radio" name="p8" value="2"> Algunas veces</label><label><input type="radio" name="p8" value="1"> Nunca</label></div></div>
-              <div class="psych-item"><strong>9. Sigo los procedimientos incluso cuando hay mucha demanda.</strong><div class="psych-options"><label><input type="radio" name="p9" value="4" required> Siempre</label><label><input type="radio" name="p9" value="3"> Casi siempre</label><label><input type="radio" name="p9" value="2"> Algunas veces</label><label><input type="radio" name="p9" value="1"> Nunca</label></div></div>
-            </div>
-          </div>
+  <div class="moss-analysis" id="mossAnalysis">
+    <h3>Analizando respuestas...</h3>
+    <div class="analysis-bar"><div class="analysis-fill" id="analysisFill"></div></div>
+    <strong id="analysisPercent">0%</strong>
+  </div>
 
-          <div class="psych-dimension">
-            <div class="psych-dimension-header"><strong>Dimensión 4 — Trabajo en equipo y presión</strong></div>
-            <div class="psych-dimension-body">
-              <div class="psych-item"><strong>10. Apoyo a mis compañeros cuando aumenta la carga de trabajo.</strong><div class="psych-options"><label><input type="radio" name="p10" value="4" required> Siempre</label><label><input type="radio" name="p10" value="3"> Casi siempre</label><label><input type="radio" name="p10" value="2"> Algunas veces</label><label><input type="radio" name="p10" value="1"> Nunca</label></div></div>
-              <div class="psych-item"><strong>11. Mantengo la calma durante horas pico o ante varios pedidos.</strong><div class="psych-options"><label><input type="radio" name="p11" value="4" required> Siempre</label><label><input type="radio" name="p11" value="3"> Casi siempre</label><label><input type="radio" name="p11" value="2"> Algunas veces</label><label><input type="radio" name="p11" value="1"> Nunca</label></div></div>
-              <div class="psych-item"><strong>12. Me adapto a cambios de tareas, horarios o prioridades.</strong><div class="psych-options"><label><input type="radio" name="p12" value="4" required> Siempre</label><label><input type="radio" name="p12" value="3"> Casi siempre</label><label><input type="radio" name="p12" value="2"> Algunas veces</label><label><input type="radio" name="p12" value="1"> Nunca</label></div></div>
-            </div>
-          </div>
+  <div class="moss-report" id="mossReport">
+    <h3 style="text-align:center;">Interpretación de Resultados</h3>
+    <div class="score-circle" id="scoreCircle"><span id="mossScoreText">0%</span></div>
+    <p id="mossInterpretation" style="text-align:center;font-weight:800;"></p>
 
-          <button type="submit" class="btn btn-primary" style="margin-top:20px;">Guardar prueba psicológica</button>
-          <div class="result-box" id="psychResult"></div>
-          <div class="dimension-results" id="psychDimensionResults" style="display:none;"></div>
-        </form>
+    <h3 style="margin-top:26px;">Competencias evaluadas</h3>
+    <div style="overflow-x:auto;">
+      <table class="competency-report">
+        <thead><tr><th>Competencia</th><th>Resultado</th></tr></thead>
+        <tbody id="mossCompetencyBody"></tbody>
+      </table>
+    </div>
+
+    <div class="recommendation-box">
+      <h3>Compatibilidad con el puesto</h3>
+      <p><strong>Compatibilidad general:</strong> <span id="mossCompatibility">0%</span></p>
+      <p id="mossCompatibilityText" style="margin-top:8px;"></p>
+    </div>
+
+    <div class="recommendation-box">
+      <h3>Observaciones del sistema</h3>
+      <p id="mossObservation"></p>
+    </div>
+
+    <div class="recommendation-box">
+      <h3>Recomendación final</h3>
+      <p id="mossRecommendation"></p>
+    </div>
+
+    <div class="eval-fields">
+      <div class="field"><label for="mossEvaluator">Evaluador</label><input id="mossEvaluator" type="text" placeholder="Nombre del evaluador"></div>
+      <div class="field"><label for="mossDate">Fecha</label><input id="mossDate" type="date"></div>
+      <div class="field"><label for="mossSignature">Firma / iniciales</label><input id="mossSignature" type="text" placeholder="Iniciales"></div>
+    </div>
+
+    <button type="button" class="btn btn-primary" id="saveMossBtn" style="margin-top:20px;">Guardar resultado en matriz de decisión</button>
+    <div class="result-box" id="psychResult"></div>
+  </div>
+</form>
+
       </div>
     </section>
 
@@ -1697,7 +1858,26 @@
     const starCandidate=document.getElementById("starCandidate");
     const psychCandidate=document.getElementById("psychCandidate");
     const starResult=document.getElementById("starResult");
-    const psychResult=document.getElementById("psychResult");const preselectionGeneralBody=document.getElementById("preselectionGeneralBody");const preselectionGeneralEmpty=document.getElementById("preselectionGeneralEmpty");
+    const psychResult=document.getElementById("psychResult");
+    const startMossBtn=document.getElementById("startMossBtn");
+    const mossQuestionsWrap=document.getElementById("mossQuestionsWrap");
+    const mossAnalysis=document.getElementById("mossAnalysis");
+    const analysisFill=document.getElementById("analysisFill");
+    const analysisPercent=document.getElementById("analysisPercent");
+    const mossReport=document.getElementById("mossReport");
+    const scoreCircle=document.getElementById("scoreCircle");
+    const mossScoreText=document.getElementById("mossScoreText");
+    const mossInterpretation=document.getElementById("mossInterpretation");
+    const mossCompetencyBody=document.getElementById("mossCompetencyBody");
+    const mossCompatibility=document.getElementById("mossCompatibility");
+    const mossCompatibilityText=document.getElementById("mossCompatibilityText");
+    const mossObservation=document.getElementById("mossObservation");
+    const mossRecommendation=document.getElementById("mossRecommendation");
+    const mossEvaluator=document.getElementById("mossEvaluator");
+    const mossDate=document.getElementById("mossDate");
+    const mossSignature=document.getElementById("mossSignature");
+    const saveMossBtn=document.getElementById("saveMossBtn");
+    let pendingMossResult=null;const preselectionGeneralBody=document.getElementById("preselectionGeneralBody");const preselectionGeneralEmpty=document.getElementById("preselectionGeneralEmpty");
     let currentVerificationCode="";
 
     menuBtn.addEventListener("click",()=>menu.classList.toggle("open"));
@@ -2025,44 +2205,182 @@
       starResult.textContent=`Entrevista guardada. Resultado STAR: ${score}%. ${score>=70?"Aprobado en entrevista.":"No aprobado en entrevista."}`;
     });
 
+
+    startMossBtn.addEventListener("click",()=>{
+      if(!psychCandidate.value){
+        psychCandidate.focus();
+        alert("Selecciona primero al candidato que realizará la evaluación.");
+        return;
+      }
+      mossQuestionsWrap.style.display="block";
+      startMossBtn.style.display="none";
+      mossQuestionsWrap.scrollIntoView({behavior:"smooth",block:"start"});
+    });
+
     psychForm.addEventListener("submit",event=>{
       event.preventDefault();
-      if(!psychForm.checkValidity()){psychForm.reportValidity();return;}
+      if(!psychForm.checkValidity()){
+        psychForm.reportValidity();
+        return;
+      }
 
       const index=Number(psychCandidate.value);
       const candidates=getCandidates();
       if(!candidates[index]) return;
 
       const answers=[];
-      for(let i=1;i<=12;i++){
-        answers.push(Number(document.querySelector(`input[name="p${i}"]:checked`).value));
+      for(let i=1;i<=18;i++){
+        const selected=document.querySelector(`input[name="p${i}"]:checked`);
+        if(!selected){
+          alert(`Falta responder la pregunta ${i}.`);
+          return;
+        }
+        answers.push(Number(selected.value));
       }
-      const total=answers.reduce((sum,value)=>sum+value,0);
-      const score=Math.round(total/48*100);
 
-      const dimensiones=[
-        Math.round(answers.slice(0,3).reduce((a,b)=>a+b,0)/12*100),
-        Math.round(answers.slice(3,6).reduce((a,b)=>a+b,0)/12*100),
-        Math.round(answers.slice(6,9).reduce((a,b)=>a+b,0)/12*100),
-        Math.round(answers.slice(9,12).reduce((a,b)=>a+b,0)/12*100)
-      ];
+      const rawTotal=answers.reduce((a,b)=>a+b,0);
+      const minRaw=18;
+      const maxRaw=72;
+      const percentage=Math.round(((rawTotal-minRaw)/(maxRaw-minRaw))*100);
 
-      candidates[index].psychScore=score;
-      candidates[index].psychAnswers=answers;
-      candidates[index].psychDimensions=dimensiones;
+      const sectionNames=["Juicio laboral","Relaciones humanas","Adaptación","Liderazgo","Honestidad","Organización"];
+      const sectionScores=[];
+      for(let s=0;s<6;s++){
+        const part=answers.slice(s*3,s*3+3);
+        const partRaw=part.reduce((a,b)=>a+b,0);
+        const partPct=Math.round(((partRaw-3)/(12-3))*100);
+        sectionScores.push(partPct);
+      }
+
+      function level(v){
+        if(v>=80) return "Alto";
+        if(v>=60) return "Medio";
+        return "Bajo";
+      }
+
+      let interpretation="";
+      let compatibilityText="";
+      let recommendation="";
+      if(percentage>=90){
+        interpretation="Excelente compatibilidad con el puesto.";
+        compatibilityText="Excelente candidato. Se recomienda continuar con la contratación.";
+        recommendation="Contratar";
+      }else if(percentage>=80){
+        interpretation="Compatible con el puesto.";
+        compatibilityText="Candidato recomendado. Cumple con el perfil del puesto.";
+        recommendation="Contratar";
+      }else if(percentage>=70){
+        interpretation="Compatible con observaciones; requiere capacitación.";
+        compatibilityText="Candidato aceptable. Se recomienda reforzar mediante capacitación antes de su contratación.";
+        recommendation="Contratar con capacitación";
+      }else if(percentage>=60){
+        interpretation="Compatibilidad baja; requiere evaluación complementaria mediante entrevista STAR.";
+        compatibilityText="Compatibilidad baja. Requiere evaluación complementaria mediante entrevista STAR.";
+        recommendation="Mantener en bolsa de candidatos";
+      }else{
+        interpretation="No recomendable para el puesto.";
+        compatibilityText="No recomendable para el puesto.";
+        recommendation="No recomendable";
+      }
+
+      const strengths=[];
+      const improvements=[];
+      sectionScores.forEach((score,i)=>{
+        if(score>=80) strengths.push(sectionNames[i].toLowerCase());
+        if(score<70) improvements.push(sectionNames[i].toLowerCase());
+      });
+
+      let observation="El candidato presenta un perfil ";
+      observation += percentage>=80 ? "favorable" : percentage>=70 ? "aceptable" : "con áreas de oportunidad";
+      observation += " para el puesto de Auxiliar de Caja. ";
+      if(strengths.length) observation += `Destaca en ${strengths.slice(0,3).join(", ")}. `;
+      if(improvements.length) observation += `Se recomienda fortalecer ${improvements.slice(0,3).join(", ")} mediante inducción, capacitación y seguimiento.`;
+      else observation += "Mantiene resultados consistentes en las competencias evaluadas.";
+
+      pendingMossResult={
+        candidateIndex:index,
+        rawTotal,
+        percentage,
+        sectionScores,
+        interpretation,
+        compatibilityText,
+        recommendation,
+        observation,
+        answers
+      };
+
+      mossAnalysis.style.display="block";
+      mossReport.style.display="none";
+      analysisFill.style.width="0%";
+      analysisPercent.textContent="0%";
+      mossAnalysis.scrollIntoView({behavior:"smooth",block:"center"});
+
+      let progress=0;
+      const timer=setInterval(()=>{
+        progress+=10;
+        analysisFill.style.width=progress+"%";
+        analysisPercent.textContent=progress+"%";
+        if(progress>=100){
+          clearInterval(timer);
+          setTimeout(()=>{
+            mossAnalysis.style.display="none";
+            mossReport.style.display="block";
+            mossScoreText.textContent=percentage+"%";
+            scoreCircle.style.background=`conic-gradient(var(--turquesa) ${percentage*3.6}deg,#e9eeee 0deg)`;
+            mossInterpretation.textContent=interpretation;
+            mossCompatibility.textContent=percentage+"%";
+            mossCompatibilityText.textContent=compatibilityText;
+            mossObservation.textContent=observation;
+            mossRecommendation.textContent=recommendation;
+
+            mossCompetencyBody.innerHTML="";
+            sectionNames.forEach((name,i)=>{
+              const row=document.createElement("tr");
+              row.innerHTML=`<td>${name}</td><td><strong>${level(sectionScores[i])}</strong> (${sectionScores[i]}%)</td>`;
+              mossCompetencyBody.appendChild(row);
+            });
+
+            const extraCompetencies=[
+              ["Trabajo en equipo",Math.round((sectionScores[1]+sectionScores[3])/2)],
+              ["Atención al cliente",Math.round((sectionScores[0]+sectionScores[1])/2)],
+              ["Comunicación",Math.round((sectionScores[1]+sectionScores[3])/2)],
+              ["Resolución de problemas",Math.round((sectionScores[0]+sectionScores[2])/2)]
+            ];
+            extraCompetencies.forEach(([name,val])=>{
+              const row=document.createElement("tr");
+              row.innerHTML=`<td>${name}</td><td><strong>${level(val)}</strong> (${val}%)</td>`;
+              mossCompetencyBody.appendChild(row);
+            });
+
+            mossReport.scrollIntoView({behavior:"smooth",block:"start"});
+          },350);
+        }
+      },120);
+    });
+
+    saveMossBtn.addEventListener("click",()=>{
+      if(!pendingMossResult) return;
+
+      const candidates=getCandidates();
+      const candidate=candidates[pendingMossResult.candidateIndex];
+      if(!candidate) return;
+
+      candidate.psychScore=pendingMossResult.percentage;
+      candidate.psychRawScore=pendingMossResult.rawTotal;
+      candidate.psychInterpretation=pendingMossResult.interpretation;
+      candidate.psychRecommendation=pendingMossResult.recommendation;
+      candidate.psychObservation=pendingMossResult.observation;
+      candidate.psychSectionScores=pendingMossResult.sectionScores;
+      candidate.psychAnswers=pendingMossResult.answers;
+      candidate.psychEvaluator=mossEvaluator.value.trim();
+      candidate.psychDate=mossDate.value;
+      candidate.psychSignature=mossSignature.value.trim();
+
       saveCandidates(candidates);
       render();
 
       psychResult.style.display="block";
-      psychResult.textContent=`Prueba psicológica guardada. Resultado general: ${score}%. ${score>=70?"Perfil favorable para el puesto.":"Perfil no favorable para el puesto."}`;
-
-      const dimensionBox=document.getElementById("psychDimensionResults");
-      dimensionBox.style.display="grid";
-      dimensionBox.innerHTML=`
-        <div><strong>Honestidad y responsabilidad</strong><br>${dimensiones[0]}%</div>
-        <div><strong>Atención y comunicación</strong><br>${dimensiones[1]}%</div>
-        <div><strong>Organización y caja</strong><br>${dimensiones[2]}%</div>
-        <div><strong>Equipo y presión</strong><br>${dimensiones[3]}%</div>`;
+      psychResult.textContent="Resultado psicológico guardado correctamente en la matriz de decisión.";
     });
 
     clearBtn.addEventListener("click",()=>{
